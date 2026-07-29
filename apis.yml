@@ -1,8 +1,27 @@
 aid: jeeng
 name: Jeeng
-description: Jeeng is a company surfaced as a portfolio company of 500-global, battery-ventures and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: Jeeng (formerly PowerInbox) is a multichannel monetization and audience-engagement
+  platform for digital publishers. It helps publishers grow first-party, opt-in audiences and
+  generate advertising revenue across email newsletters, websites, push notifications, and
+  newsreader apps, reaching more than 150M opt-in subscribers. Its products — AdFill, AdServe,
+  AdMarket, and Renderer — fill vacant ad inventory with monetized content, extend direct ad
+  campaigns into email through existing ad servers, connect advertisers to opt-in audiences,
+  and streamline Google Ad Manager ad-ops workflows. Publisher integration is handled through
+  merge tags, per-newsletter ad tags, and cs_email tracking parameters plus direct Google Ad
+  Manager integration; campaigns and reporting are managed through the PowerInbox Portal at
+  manage.jeeng.com. Jeeng publishes no public developer API.
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://www.jeeng.com/wp-content/uploads/2022/04/Jeeng_w_OW.png
 url: https://raw.githubusercontent.com/api-evangelist/jeeng/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -13,9 +32,17 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
+- Advertising
+- Publishing
+- Email
+- Push Notifications
+- Monetization
+- AdTech
+- Newsletters
+- Audience Engagement
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +52,22 @@ maintainers:
 common:
 - type: Website
   url: https://jeeng.com
+- type: TermsOfService
+  url: https://www.jeeng.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.jeeng.com/privacy-policy/
+- type: Support
+  url: https://www.jeeng.com/contact-us/
+- type: Blog
+  url: https://www.jeeng.com/news/
+- type: Login
+  url: https://manage.jeeng.com/
+- type: DomainSecurity
+  url: security/jeeng-domain-security.yml
+- type: LLMsTxt
+  url: llms/jeeng-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
