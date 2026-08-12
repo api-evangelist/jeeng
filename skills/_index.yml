@@ -1,0 +1,56 @@
+generated: '2026-08-12'
+method: generated
+source: openapi/jeeng-advertisers-openapi.yml, openapi/jeeng-publishers-openapi.yml,
+  openapi/jeeng-authentication-openapi.yml, https://developers.jeeng.com/reference
+summary: Packaged Agent Skills for the Jeeng / OpenWeb Email Monetization partner APIs. Every step
+  is grounded in a published operationId; no operation, parameter or field is invented. Jeeng
+  publishes no AGENTS.md or provider-authored skills, so these are generated from the contract plus
+  the documented conventions, error semantics and reporting caveats.
+skills:
+- name: jeeng-pull-a-publisher-inventory-report
+  file: jeeng-pull-a-publisher-inventory-report.md
+  api: Jeeng Email Monetization — Publishers API
+  operations:
+  - getting-an-access-token
+  - reporting-containers
+  - reporting-placements
+  - reporting-publisher-performance
+  description: Container, placement and flexible CSV reporting for a publisher, including the Apple
+    MPP adjusted-opens rule and the 303 CSV redirect.
+- name: jeeng-pull-an-advertiser-campaign-report
+  file: jeeng-pull-an-advertiser-campaign-report.md
+  api: Jeeng Email Monetization — Advertisers API
+  operations:
+  - getting-an-access-token
+  - reporting-campaigns
+  - reporting-campaign-lines
+  - reporting-advertiser-performance
+  description: Campaign and campaign-line OData grain reports plus the flexible advertiser
+    performance CSV, with the 32-day range cap and the two incompatible filter idioms.
+- name: jeeng-manage-a-campaign-line
+  file: jeeng-manage-a-campaign-line.md
+  api: Jeeng Email Monetization — Advertisers API
+  operations:
+  - getting-an-access-token
+  - management-line-update
+  - management-line-status
+  - management-creative-status
+  description: The complete write surface — daily spend goal and mutually exclusive CPC/CPM/CPA
+    pricing, plus running/paused/archived transitions for lines and creatives.
+shared_preconditions:
+- API credentials are provisioned by a Jeeng account manager; there is no self-serve signup.
+- Every call to powerinbox.azure-api.net requires `api-version=1.0`.
+- Tokens must be requested with scope `api://revenuestripe.onmicrosoft.com/partners/.default`;
+  any other scope produces `401 Not authorized to this endpoint.`
+references:
+  conventions: conventions/jeeng-conventions.yml
+  errors: errors/jeeng-problem-types.yml
+  authentication: authentication/jeeng-authentication.yml
+  scopes: scopes/jeeng-scopes.yml
+  rate_limits: rate-limits/jeeng-rate-limits.yml
+provider_published_skills:
+  found: false
+  searched:
+  - https://developers.jeeng.com/llms.txt
+  - https://developers.jeeng.com/
+  note: No AGENTS.md, skills directory or provider-authored agent instructions are published.

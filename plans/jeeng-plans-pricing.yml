@@ -1,0 +1,46 @@
+generated: '2026-08-12'
+method: searched
+source: https://www.jeeng.com/, https://developers.jeeng.com/docs/publisher-billing
+summary: Jeeng publishes no plans, tiers or list prices. Every commercial path is a conversation —
+  the marketing site's only calls to action are "Book a Demo", "Let's Talk" and "Contact Us", there
+  is no /pricing page, and API access itself is provisioned by an account manager rather than
+  purchased. The money model is revenue share and invoicing, not subscription tiers.
+plan_count: 0
+plans: []
+pricing_page: null
+pricing_model:
+  publisher_side: revenue share on monetized email, web, push and newsreader inventory; publishers
+    are PAID rather than billed, through the portal's Billing section.
+  advertiser_side: campaign spend priced per campaign line as CPC, CPM or CPA (the three mutually
+    exclusive `pricing` fields on the campaign line update operation), with a daily spend goal
+    (`budget`).
+  adserve_billing: 'Customers using AdServe for email are invoiced monthly for impressions coming
+    from GAM targeting the email ad units. Source: https://developers.jeeng.com/docs/publisher-billing'
+payouts:
+  processor: Tipalti
+  minimum: aggregated amounts over $50 are paid monthly
+  transfer_fees: OpenWeb covers transfer fees up to $5 per transaction; any excess is deducted from
+    the payment
+  schedule: invoices issued at the beginning of the following month
+  early_payment: available through Tipalti, subject to fees and Tipalti's terms
+  source: https://developers.jeeng.com/docs/publisher-billing
+api_access:
+  self_serve: false
+  cost_published: false
+  note: 'Both the publisher and advertiser overviews say the same thing: to use the APIs you must
+    reach out to your account manager, who configures the account and provisions credentials. No
+    price, quota or included-call allowance is published for API access.'
+x-evidence:
+- url: https://www.jeeng.com/pricing
+  http_status: 403
+  note: no pricing page exists; the WordPress site's edge answers unknown paths with a Cloudflare
+    403 rather than a 404
+- url: https://www.jeeng.com/
+  http_status: 200
+  note: 'nav is Solutions / Advertisers / Monetization / About Us — no pricing entry; CTAs are
+    "Book a Demo" and "Let''s Talk"'
+- url: https://developers.jeeng.com/docs/publisher-billing.md
+  http_status: 200
+- url: https://developers.jeeng.com/docs/publisher-overview.md
+  http_status: 200
+checked: '2026-08-12'

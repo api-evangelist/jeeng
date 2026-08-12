@@ -1,0 +1,67 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.jeeng.com/reference
+derived_from:
+- openapi/jeeng-advertisers-openapi.yml
+- openapi/jeeng-publishers-openapi.yml
+versioning:
+  scheme: query parameter
+  parameter: api-version
+  current_version: '1.0'
+  required: true
+  hosts:
+  - https://powerinbox.azure-api.net/
+  policy_published: false
+  note: Every published operation requires `api-version=1.0`. Jeeng publishes no statement about
+    how versions are introduced, how long a version is supported, or what constitutes a breaking
+    change.
+deprecation:
+  policy_published: false
+  sunset_header: not documented
+  deprecation_header: not documented
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No operation in the published fragments carries `deprecated: true` — every one explicitly
+    sets `deprecated: false`. There is no deprecation or sunset policy page anywhere on the
+    developer hub, so no Deprecation pointer is wired.
+status_page:
+  published: false
+  note: 'No status page is served for Jeeng or for the Email Monetization APIs. status.jeeng.com
+    does not resolve. The parent company runs status.openweb.com (Better Uptime), but its components
+    are Launcher, Conversation, Read Services, Moderation Services, Mobile Gateway, SSO Services,
+    Social Connect Services, GDPR services and Admin Panel — the OpenWeb conversation platform, with
+    no email-monetization, advertiser-API or publisher-API component. It is therefore NOT wired as a
+    StatusPage for this provider: it would credit Jeeng with uptime reporting its API does not have.'
+changelog:
+  published: false
+  note: The ReadMe hub has no changelog section (developers.jeeng.com/changelog returns 404) and no
+    dated release notes are published. Individual doc pages expose an `updatedAt` timestamp in their
+    markdown frontmatter — the most recent API reference update observed was 2026-07-13.
+  last_reference_update: '2026-07-13'
+sla:
+  published: false
+  note: No SLA, uptime commitment or support-response target is published on the developer hub or
+    the marketing site.
+support:
+  channel: email
+  contact: support@jeeng.com
+  escalation: named account manager (required for API provisioning, opt-out list setup, and
+    campaign troubleshooting)
+maturity:
+  stage: production
+  access: partner-only, account-manager provisioned
+  history: Product shipped as PowerInbox, rebranded Jeeng in 2020, acquired by OpenWeb in 2022 and
+    now documented as "OpenWeb Email Monetization" on the original Jeeng domains.
+x-evidence:
+- url: https://developers.jeeng.com/changelog
+  http_status: 404
+  fetched: '2026-08-12'
+- url: https://status.openweb.com/
+  http_status: 200
+  fetched: '2026-08-12'
+  note: probed and rejected — no email-monetization component
+- url: https://developers.jeeng.com/reference/management-line-update.md
+  http_status: 200
+  fetched: '2026-08-12'
+checked: '2026-08-12'

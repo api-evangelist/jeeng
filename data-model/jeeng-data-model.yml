@@ -1,0 +1,173 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/jeeng-advertisers-openapi.yml, openapi/jeeng-publishers-openapi.yml,
+  https://developers.jeeng.com/llms.txt
+summary: Entity graph for the Jeeng / OpenWeb Email Monetization platform, derived from the path
+  parameters, request bodies and report field names in the published OpenAPI fragments and from the
+  portal documentation. The published fragments declare empty response schemas, so entity FIELDS
+  below are only those that actually appear in a request body, a path/query parameter or a
+  documented report column — nothing is inferred from a product description.
+entities:
+- name: Campaign
+  side: advertiser
+  id_field: CampaignId
+  description: An advertiser campaign. Reported on at daily or hourly grain; the container for
+    campaign lines.
+  operations:
+  - reporting-campaigns
+  fields:
+  - CampaignId
+  - DateTime
+  - Impressions
+  - Clicks
+  - Spend
+  relationships:
+  - type: has_many
+    target: CampaignLine
+    via: campaign line belongs to a campaign (documented in the Campaign Details portal page)
+- name: CampaignLine
+  side: advertiser
+  id_field: id (path parameter, "The campaign line ID")
+  description: The delivery unit of a campaign — targeting, pacing, daily spend goal, inventory
+    selection and discovery settings. The only entity with a published write surface beyond a
+    status transition.
+  operations:
+  - management-line-update
+  - management-line-status
+  - reporting-campaign-lines
+  fields:
+  - name: budget
+    type: integer
+    description: The daily spend goal
+  - name: pricing.cpc
+    type: number
+    description: The price to pay for each click
+  - name: pricing.cpm
+    type: number
+    description: The price to pay for 1000 impressions
+  - name: pricing.cpa
+    type: number
+    description: The amount to pay for achieving CPA goals
+  - name: status
+    type: enum
+    values:
+    - running
+    - paused
+    - archived
+  constraints:
+  - Only one of pricing.cpc, pricing.cpm or pricing.cpa may be set.
+  relationships:
+  - type: belongs_to
+    target: Campaign
+    via: CampaignId
+  - type: has_many
+    target: Creative
+    via: creatives are transitioned independently but deliver within a line
+- name: Creative
+  side: advertiser
+  id_field: id (path parameter, "The creative ID")
+  description: An advertisement rendered into email inventory. Only its lifecycle status is exposed
+    through the API.
+  operations:
+  - management-creative-status
+  fields:
+  - name: status
+    type: enum
+    values:
+    - running
+    - paused
+    - archived
+  relationships:
+  - type: belongs_to
+    target: CampaignLine
+- name: Container
+  side: publisher
+  id_field: ID (report column)
+  description: A publisher property or newsletter grouping that holds placements. The top level of
+    the publisher inventory hierarchy; selecting a container filters the whole performance report.
+  operations:
+  - reporting-containers
+  fields:
+  - ID
+  - Name
+  - Served Ads
+  - Served Ads Adjusted
+  - Opens
+  - Opens Adjusted
+  - Clicks
+  - Revenue
+  - CTR
+  - RPM
+  relationships:
+  - type: has_many
+    target: Placement
+- name: Placement
+  side: publisher
+  id_field: PlacementId
+  description: An individual ad slot inside a newsletter or page. Placements can be re-used between
+    newsletters.
+  operations:
+  - reporting-placements
+  - reporting-publisher-performance
+  fields:
+  - ID
+  - Name
+  - Served Ads
+  - Served Ads Adjusted
+  - Opens
+  - Opens Adjusted
+  - Clicks
+  - Revenue
+  - CTR
+  - RPM
+  relationships:
+  - type: belongs_to
+    target: Container
+    via: container id
+- name: PublisherAccount
+  side: publisher
+  description: The publisher company a user has access to. Reports default to all companies the
+    caller can see and can be grouped by Account.
+  operations:
+  - reporting-publisher-performance
+  relationships:
+  - type: has_many
+    target: Container
+- name: PerformanceReport
+  side: both
+  description: The flexible reporting projection. Not a stored entity — a caller-shaped CSV
+    materialised over Campaign/CampaignLine (advertiser) or Container/Placement (publisher) for a
+    half-open date range of at most 32 days.
+  operations:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  dimensions:
+  - DateTime
+  - CampaignId
+  - PlacementId
+  - Device / Proxy
+  - Account
+  measures:
+  - Impressions
+  - Opens
+  - Adjusted Opens
+  - Clicks
+  - Spend
+  - Revenue
+  - CTR
+  - RPM
+identifier_conventions:
+  style: opaque string ids in path parameters; PascalCase field names in report queries and columns
+  note: No id prefixes or typed id scheme is published. Report field names (CampaignId, PlacementId,
+    DateTime) are PascalCase, while path parameters are lowercase (`id`, `status`).
+subject_identifiers:
+  cs_email: An opaque per-subscriber identifier passed by the publisher through Jeeng advertising
+    URLs. Opt-out lists must be supplied in the same opaque format for matching. Not exposed through
+    the reporting APIs.
+gaps:
+- No read operations exist for Campaign, CampaignLine, Creative, Container or Placement objects —
+  only reports and three writes. Object listing and detail are portal-only surfaces (Campaigns
+  List, Campaign Details, Container Details, Placement Details).
+- Every published 200 response schema is an empty object, so no entity is described by a JSON
+  Schema; the fields above come from request bodies, parameters and documented report columns.
+checked: '2026-08-12'

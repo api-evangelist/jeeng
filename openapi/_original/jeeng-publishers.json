@@ -1,0 +1,280 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "publishers",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://powerinbox.azure-api.net/"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {}
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {
+    "/reporting/containers": {
+      "get": {
+        "summary": "Containers Report",
+        "description": "Retrieve container reports with a daily grain.",
+        "operationId": "reporting-containers",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "OData filter expression",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "Date eq 2023-12-13Z"
+            }
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "description": "The API version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"@odata.context\": \"https://.../$metadata#Containers\",\n    \"value\": [{\n            \"Date\": \"2019-10-01T00:00:00Z\",\n            \"ContainerId\": 33,\n            \"ClicksTotal\": 0,\n            \"CompanyId\": 15,\n            \"RequestsUnique\": 6,\n            \"RevenueNet\": 0.00,\n        },\n        {\n            \"Date\": \"2019-10-01T00:00:00Z\",\n            \"ContainerId\": 36,\n            \"ClicksTotal\": 0,\n            \"CompanyId\": 15,\n            \"RequestsUnique\": 5,\n            \"RevenueNet\": 0.00,\n        }\n    ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/reporting/placements": {
+      "get": {
+        "summary": "Placements Report",
+        "description": "Retrieve placement reports with a daily grain",
+        "operationId": "reporting-placements",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "OData filter expression",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "Date eq 2023-12-13Z"
+            }
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "description": "The API version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{\n    \"@odata.context\": \"https://.../$metadata#Placements\",\n    \"value\": [{\n            \"Date\": \"2019-10-01T00:00:00Z\",\n            \"PlacementId\": 152,\n            \"ClicksTotal\": 0,\n            \"CompanyId\": 15,\n            \"RequestsUnique\": 10,\n            \"RevenueNet\": 0.00,\n            \"RequestsTotal\": 20,\n        },\n        {\n            \"Date\": \"2019-10-01T00:00:00Z\",\n            \"PlacementId\": 153,\n            \"ClicksTotal\": 0,\n            \"CompanyId\": 15,\n            \"RequestsUnique\": 13,\n            \"RevenueNet\": 0.00,\n            \"RequestsTotal\": 71,\n        }\n    ]\n}"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/reporting/publisherperformance": {
+      "get": {
+        "summary": "Publisher Performance Report",
+        "description": "Retrieve a flexible publisher performance report by specifying the fields, filters, and grouping you need. The endpoint returns a 303 redirect with a Location header. Follow the redirect to download the report data as CSV.",
+        "operationId": "reporting-publisher-performance",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Must be set to text/csv",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "text/csv"
+            }
+          },
+          {
+            "name": "requestedFields",
+            "in": "query",
+            "description": "Comma-separated list of fields to include in the results",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "DateTime,PlacementId,Opens,Clicks,Revenue"
+            }
+          },
+          {
+            "name": "startInclusive",
+            "in": "query",
+            "description": "Start of the date range (inclusive)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "default": "2026-03-01T00:00:00Z"
+            }
+          },
+          {
+            "name": "endExclusive",
+            "in": "query",
+            "description": "End of the date range (exclusive)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "default": "2026-04-01T00:00:00Z"
+            }
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "Key-value filter pairs (e.g. filter[PlacementId]=456)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "groupBy",
+            "in": "query",
+            "description": "Comma-separated list of fields to group results by",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "api-version",
+            "in": "query",
+            "description": "The API version",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1.0"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 - Response from following the redirect. Contains the report data as CSV.",
+            "content": {
+              "text/csv": {
+                "examples": {
+                  "Result": {
+                    "value": "\"DateTime\",\"PlacementId\",\"ContainerId\",\"Opens\",\"Clicks\",\"Revenue\"\n\"2026-03-01T00:00:00Z\",152,300,4820,312,148.50\n\"2026-03-02T00:00:00Z\",152,300,3210,198,96.30"
+                  }
+                }
+              }
+            }
+          },
+          "303": {
+            "description": "303 See Other - The endpoint returns this status code directly. The Location header contains the URL where the report data can be downloaded. Most HTTP clients follow this redirect automatically.",
+            "headers": {
+              "Location": {
+                "description": "URL to download the report data. Issue a GET request to this URL to retrieve the CSV response shown above.",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "400 Bad Request - The request parameters are invalid. Check that all field names are valid, groupBy fields are included in requestedFields, and the date range does not exceed 32 days.",
+            "content": {
+              "application/json": {
+                "examples": {
+                  "Result": {
+                    "value": "{}"
+                  }
+                },
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "401 Unauthorized - The request is missing a valid access token, or the token does not have the required scope."
+          },
+          "500": {
+            "description": "500 Internal Server Error - An unexpected error occurred while processing the request."
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "x-readme": {
+    "headers": [],
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "x-readme-fauxas": true
+}

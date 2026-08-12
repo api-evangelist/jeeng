@@ -1,0 +1,106 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/jeeng-advertisers-openapi.yml, openapi/jeeng-publishers-openapi.yml,
+  mcp/jeeng-mcp.yml
+summary: The crosswalk is empty on purpose. Jeeng serves an MCP endpoint, but it is the ReadMe
+  documentation MCP for developers.jeeng.com — its tools read documentation pages, not the
+  advertiser or publisher APIs — and it rejects anonymous introspection, so its tool names are
+  unknown. Every published REST operation is therefore rest_only. This file records that gap rather
+  than inventing bindings.
+surfaces:
+  openapi:
+  - file: openapi/jeeng-advertisers-openapi.yml
+    base: https://powerinbox.azure-api.net/
+    gated: true
+    auth: OAuth 2.0 client credentials (Entra), account-manager provisioned
+  - file: openapi/jeeng-publishers-openapi.yml
+    base: https://powerinbox.azure-api.net/
+    gated: true
+    auth: OAuth 2.0 client credentials (Entra), account-manager provisioned
+  - file: openapi/jeeng-authentication-openapi.yml
+    base: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com
+    gated: false
+    note: the token endpoint itself is reachable, but useless without provisioned credentials
+  graphql: null
+  mcp:
+    url: https://developers.jeeng.com/mcp
+    gated: true
+    scope: documentation only
+    tools_enumerated: false
+crosswalk: []
+mcp_only: []
+rest_only:
+- operationId: getting-an-access-token
+  method: POST
+  path: /revenuestripe.onmicrosoft.com/oauth2/v2.0/token
+  api: authentication
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: management-line-update
+  method: PUT
+  path: /management/line/{id}
+  api: advertisers
+  category: campaign-management
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: management-line-status
+  method: POST
+  path: /management/line/{id}/transition/{status}
+  api: advertisers
+  category: campaign-management
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: management-creative-status
+  method: POST
+  path: /management/creative/{id}/transition/{status}
+  api: advertisers
+  category: campaign-management
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-campaigns
+  method: GET
+  path: /reporting/campaigns/{interval}
+  api: advertisers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-campaign-lines
+  method: GET
+  path: /reporting/lines/{interval}
+  api: advertisers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-advertiser-performance
+  method: GET
+  path: /reporting/advertiserperformance
+  api: advertisers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-containers
+  method: GET
+  path: /reporting/containers
+  api: publishers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-placements
+  method: GET
+  path: /reporting/placements
+  api: publishers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+- operationId: reporting-publisher-performance
+  method: GET
+  path: /reporting/publisherperformance
+  api: publishers
+  category: reporting
+  reason: no MCP tool exists for any Jeeng API operation
+coverage:
+  rest_operations: 10
+  mcp_tools_known: 0
+  bound: 0
+  rest_only: 10
+  mcp_only: 0
+  coverage_percent: 0
+notes:
+- >-
+  Binding the documentation MCP's tools to REST operations would be a category error: they serve
+  markdown pages, not campaign or reporting data. No confidence level would make such a row honest.
+- If Jeeng later publishes an API-facing MCP server, the ten operations above are the surface it
+  would wrap, and the parameters in the OpenAPI fragments are the inputSchemas those tools would
+  inherit.
+checked: '2026-08-12'

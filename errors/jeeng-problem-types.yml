@@ -1,0 +1,105 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/jeeng-advertisers-openapi.yml, openapi/jeeng-publishers-openapi.yml,
+  openapi/jeeng-authentication-openapi.yml
+docs: https://developers.jeeng.com/reference
+format: proprietary
+rfc9457: false
+envelope:
+  api: '{"statusCode": <integer>, "message": "<string>"}'
+  token_endpoint: '{"error": "<string>", "error_description": "<string>", "error_codes": [<int>],
+    "timestamp": "<string>", "trace_id": "<string>", "correlation_id": "<string>",
+    "error_uri": "<url>"}'
+  note: Two different error shapes are in play. Calls to powerinbox.azure-api.net return the Azure
+    API Management envelope (statusCode + message); calls to the Microsoft Entra token endpoint
+    return the OAuth 2.0 / Entra error envelope. Neither is application/problem+json, so there is
+    no `type` URI to catalog and RFC 9457 does not apply.
+problem_types:
+- status: 400
+  title: Bad Request
+  operations:
+  - management-line-update
+  - management-line-status
+  - management-creative-status
+  - reporting-campaigns
+  - reporting-campaign-lines
+  - reporting-containers
+  - reporting-placements
+  source: openapi 400 response
+  documented_schema: 'empty object ({"type":"object","properties":{}}) — the published fragments
+    declare a 400 with no fields, so the failure reason is not machine-readable'
+  remediation: Check the OData `$filter` expression and that the required `api-version=1.0` query
+    parameter is present.
+- status: 400
+  title: Bad Request — invalid report parameters
+  operations:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  source: openapi 400 response description
+  meaning: The request parameters are invalid.
+  remediation: Check that all field names are valid, that every `groupBy` field also appears in
+    `requestedFields`, and that the date range does not exceed 32 days.
+- status: 401
+  title: Unauthorized
+  operations:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  - all operations on powerinbox.azure-api.net
+  source: openapi 401 response + live probe
+  observed_body: '{ "statusCode": 401, "message": "Unauthorized" }'
+  meaning: The request is missing a valid access token, or the token does not have the required
+    scope.
+  remediation: >-
+    Request a token from the Entra tenant with scope
+    `api://revenuestripe.onmicrosoft.com/partners/.default` and send it as `Authorization: Bearer`.
+- status: 401
+  title: Not authorized to this endpoint.
+  operations:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  source: https://developers.jeeng.com/reference/getting-an-access-token
+  meaning: The access token was issued for a scope other than the partners scope. Jeeng documents
+    this as the most common cause of a 401 — and warns that a wrong-scope token can still succeed
+    on some endpoints, so the error typically shows up only on the performance reports.
+  remediation: Re-request the token with the partners `.default` scope; do not assume the token is
+    good because another endpoint accepted it.
+- status: 404
+  title: Resource not found
+  operations:
+  - any unmatched path on powerinbox.azure-api.net
+  source: live probe of /.well-known/* on the API host
+  observed_body: '{ "statusCode": 404, "message": "Resource not found" }'
+- status: 500
+  title: Internal Server Error
+  operations:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  source: openapi 500 response description
+  meaning: An unexpected error occurred while processing the request.
+  remediation: Retry; if it persists contact technical support (support@jeeng.com) with the
+    campaign/placement id and date range.
+- status: 400
+  title: unauthorized_client (token endpoint)
+  operations:
+  - getting-an-access-token
+  source: openapi 400 response example
+  example_error_code: 700016
+  meaning: The client id is not recognised in the tenant, or the client is not authorized for the
+    requested scope.
+  remediation: Confirm the client id and secret provisioned by Jeeng technical support and the
+    exact scope string.
+gaps:
+- The 200 and 400 response schemas published for the management and grain-report operations are
+  empty objects, so success and failure payload shapes are not machine-readable from the spec.
+- No error code vocabulary, no `code` field and no problem type URIs are published; a client can
+  only branch on HTTP status plus a free-text message.
+x-evidence:
+- url: https://powerinbox.azure-api.net/reporting/containers?api-version=1.0
+  http_status: 401
+  fetched: '2026-08-12'
+- url: https://powerinbox.azure-api.net/.well-known/security.txt
+  http_status: 404
+  fetched: '2026-08-12'
+- url: https://developers.jeeng.com/reference/reporting-publisher-performance.md
+  http_status: 200
+  fetched: '2026-08-12'

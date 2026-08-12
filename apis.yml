@@ -1,26 +1,34 @@
 aid: jeeng
 name: Jeeng
-description: Jeeng (formerly PowerInbox) is a multichannel monetization and audience-engagement
-  platform for digital publishers. It helps publishers grow first-party, opt-in audiences and
-  generate advertising revenue across email newsletters, websites, push notifications, and
-  newsreader apps, reaching more than 150M opt-in subscribers. Its products — AdFill, AdServe,
-  AdMarket, and Renderer — fill vacant ad inventory with monetized content, extend direct ad
-  campaigns into email through existing ad servers, connect advertisers to opt-in audiences,
-  and streamline Google Ad Manager ad-ops workflows. Publisher integration is handled through
-  merge tags, per-newsletter ad tags, and cs_email tracking parameters plus direct Google Ad
-  Manager integration; campaigns and reporting are managed through the PowerInbox Portal at
-  manage.jeeng.com. Jeeng publishes no public developer API.
+description: >-
+  Jeeng (formerly PowerInbox, acquired by OpenWeb in 2022 and now marketed as OpenWeb
+  Email Monetization) is a multichannel monetization and audience-engagement platform for digital
+  publishers. It helps publishers grow first-party, opt-in audiences and generate advertising
+  revenue across email newsletters, websites, push notifications, and newsreader apps, reaching
+  more than 150M opt-in subscribers. Its products — AdFill, AdServe, AdMarket, and Renderer — fill
+  vacant ad inventory with monetized content, extend direct ad campaigns into email through
+  existing ad servers, connect advertisers to opt-in audiences, and streamline Google Ad Manager
+  ad-ops workflows. Publisher integration is handled through merge tags, per-newsletter ad tags,
+  and cs_email tracking parameters plus direct Google Ad Manager integration; campaigns and
+  reporting are managed through the portal at manage.jeeng.com. Jeeng also publishes partner
+  Reporting & Management APIs at developers.jeeng.com — an advertiser API for campaign line and
+  creative management plus campaign/performance reporting, and a publisher API for container,
+  placement and publisher performance reporting — served from powerinbox.azure-api.net behind
+  Microsoft Entra ID OAuth 2.0 client-credentials tokens. API access is not self-serve: an account
+  manager provisions the client id and client secret.
 accessModel:
   pricing: unknown
-  onboarding: unknown
+  onboarding: sales
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Sales-gated partner API
+  confidence: high
+  source:
+  - https://developers.jeeng.com/docs/publisher-overview
+  - https://developers.jeeng.com/docs/advertiser-overview
+  generated: '2026-08-12'
+  method: searched
 image: https://www.jeeng.com/wp-content/uploads/2022/04/Jeeng_w_OW.png
 url: https://raw.githubusercontent.com/api-evangelist/jeeng/refs/heads/main/apis.yml
 x-type: company
@@ -28,11 +36,11 @@ x-source: vc-portfolio
 x-backed-by:
 - 500-global
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
-specificationVersion: '0.20'
+x-tier: enriched
+x-tier-reason: enrichment-pipeline
+specificationVersion: '0.21'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-12'
 tags:
 - Company
 - Advertising
@@ -43,7 +51,92 @@ tags:
 - AdTech
 - Newsletters
 - Audience Engagement
-apis: []
+- Reporting
+- Analytics
+- OData
+- OAuth
+apis:
+- name: Jeeng Email Monetization — Advertisers API
+  description: >-
+    Advertiser-side campaign management and reporting for the Jeeng / OpenWeb Email Monetization
+    platform. Update campaign lines (daily spend goal and CPC/CPM/CPA pricing), transition campaign
+    line and creative status between running, paused and archived, and pull campaign and
+    campaign-line reports at daily or hourly grain using OData V4 $filter queries. A flexible
+    advertiser performance report returns a 303 redirect to a CSV download for a caller-specified
+    set of fields, filters and groupings over a date range of up to 32 days. Requires an OAuth 2.0
+    client-credentials bearer token from the Microsoft Entra tenant, requested with the partners
+    scope; credentials are provisioned by an account manager.
+  humanURL: https://developers.jeeng.com/reference
+  baseURL: https://powerinbox.azure-api.net/
+  tags:
+  - Advertising
+  - AdTech
+  - Email
+  - Reporting
+  - Analytics
+  - OData
+  - Campaign Management
+  properties:
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/advertiser-overview
+  - type: APIReference
+    url: https://developers.jeeng.com/reference
+  - type: OpenAPI
+    url: openapi/jeeng-advertisers-openapi.yml
+  - type: Overlay
+    url: overlays/jeeng-advertisers-overlay.yaml
+- name: Jeeng Email Monetization — Publishers API
+  description: >-
+    Publisher-side inventory reporting for the Jeeng / OpenWeb Email Monetization platform.
+    Retrieve container and placement reports at a daily grain using OData V4 $filter queries, and a
+    flexible publisher performance report that returns a 303 redirect to a CSV download for a
+    caller-specified set of fields, filters and groupings over a date range of up to 32 days.
+    Metrics cover served ads, opens (including Apple Mail Privacy Protection adjusted opens),
+    clicks, revenue, CTR and RPM. Requires an OAuth 2.0 client-credentials bearer token from the
+    Microsoft Entra tenant, requested with the partners scope; credentials are provisioned by an
+    account manager.
+  humanURL: https://developers.jeeng.com/reference
+  baseURL: https://powerinbox.azure-api.net/
+  tags:
+  - Publishing
+  - AdTech
+  - Email
+  - Newsletters
+  - Reporting
+  - Analytics
+  - OData
+  properties:
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/publisher-overview
+  - type: APIReference
+    url: https://developers.jeeng.com/reference
+  - type: OpenAPI
+    url: openapi/jeeng-publishers-openapi.yml
+  - type: Overlay
+    url: overlays/jeeng-publishers-overlay.yaml
+- name: Jeeng Email Monetization — Authentication
+  description: >-
+    OAuth 2.0 client-credentials token endpoint for the Jeeng / OpenWeb Email Monetization partner
+    APIs, published by Jeeng as its own OpenAPI definition. Tokens are issued by the Microsoft
+    Entra ID (Azure AD) tenant revenuestripe.onmicrosoft.com and must be requested with the scope
+    api://revenuestripe.onmicrosoft.com/partners/.default, which grants access to every partner
+    endpoint. The resulting access_token is sent as a bearer token to the advertiser and publisher
+    APIs.
+  humanURL: https://developers.jeeng.com/reference/getting-an-access-token
+  baseURL: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com
+  tags:
+  - Authentication
+  - OAuth
+  - Security
+  properties:
+  - type: Documentation
+    url: https://developers.jeeng.com/reference/getting-an-access-token
+  - type: APIReference
+    url: https://developers.jeeng.com/reference/getting-an-access-token
+  - type: OpenAPI
+    url: openapi/jeeng-authentication-openapi.yml
+  - type: Overlay
+    url: overlays/jeeng-authentication-overlay.yaml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -52,6 +145,14 @@ maintainers:
 common:
 - type: Website
   url: https://jeeng.com
+- type: DeveloperPortal
+  url: https://developers.jeeng.com/
+- type: Documentation
+  url: https://developers.jeeng.com/docs/getting-started
+- type: APIReference
+  url: https://developers.jeeng.com/reference
+- type: GettingStarted
+  url: https://developers.jeeng.com/docs/getting-started
 - type: TermsOfService
   url: https://www.jeeng.com/terms-of-use/
 - type: PrivacyPolicy
@@ -66,8 +167,39 @@ common:
   url: security/jeeng-domain-security.yml
 - type: LLMsTxt
   url: llms/jeeng-llms.txt
+- type: Authentication
+  url: authentication/jeeng-authentication.yml
+- type: OAuthScopes
+  url: scopes/jeeng-scopes.yml
+- type: Conventions
+  url: conventions/jeeng-conventions.yml
+- type: ErrorCatalog
+  url: errors/jeeng-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/jeeng-lifecycle.yml
+- type: Conformance
+  url: conformance/jeeng-conformance.yml
+- type: DataModel
+  url: data-model/jeeng-data-model.yml
+- type: Packages
+  url: packages/jeeng-packages.yml
+- type: Plans
+  url: plans/jeeng-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/jeeng-rate-limits.yml
+- type: MCPServer
+  url: mcp/jeeng-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/jeeng-tool-crosswalk.yml
+- type: AgentSkill
+  url: skills/_index.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-12'
+  status: enriched
+  artifacts_added: 26
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 1 recorded "Jeeng publishes no public developer API". That was wrong. STEP 0b contract
+    discovery found a live ReadMe developer hub at developers.jeeng.com (readme-subdomain "jeeng")
+    publishing three OpenAPI 3.1.0 definitions and ten operations against
+    https://powerinbox.azure-api.net/, plus a served llms.txt and a gated MCP endpoint.

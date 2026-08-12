@@ -1,0 +1,58 @@
+generated: '2026-08-12'
+method: probed
+source: https://developers.jeeng.com/mcp
+status: live-gated
+summary: Jeeng serves an MCP endpoint at https://developers.jeeng.com/mcp. It is the documentation
+  MCP that ships with the ReadMe developer hub — it exposes the docs corpus to an agent, NOT the
+  advertiser and publisher APIs. Anonymous JSON-RPC is rejected, so the real tool list and input
+  schemas could not be read.
+servers:
+- name: Jeeng / OpenWeb Email Monetization documentation MCP
+  url: https://developers.jeeng.com/mcp
+  transport: streamable-http (JSON-RPC 2.0)
+  hosted_by: ReadMe (developer hub platform), served on the provider's own domain
+  official: true
+  auth_required: true
+  scope: documentation
+  covers_rest_api: false
+probe:
+  method: POST
+  body: '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18",...}}'
+  accept: application/json, text/event-stream
+  http_status: 401
+  response: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+  fetched: '2026-08-12'
+  note: 'A plain GET returns the string "This URL can only be accessed with a MCP client." (HTTP
+    200), confirming the endpoint is deliberately served. tools/list therefore could not be
+    enumerated: the live tool schemas require authenticated introspection.'
+oauth_discovery:
+  well_known_oauth_authorization_server: 404
+  well_known_oauth_protected_resource: 404
+  note: The endpoint answers 401 "Authorization required" but publishes neither RFC 8414 nor RFC
+    9728 discovery metadata on developers.jeeng.com, so a client cannot discover where to obtain a
+    token. Probed 2026-08-12.
+tools:
+  enumerated: false
+  count: null
+  note: No tool list is published. The docs hub's llms.txt (llms/jeeng-llms.txt) enumerates the
+    documentation corpus — 50 guide pages and 10 API reference pages — which is the same content the
+    documentation MCP would serve, but it is a page index, not a tool manifest, so no tool names or
+    inputSchemas are recorded here. Nothing is invented.
+api_mcp_server:
+  exists: false
+  note: There is no MCP server in front of the advertiser or publisher APIs. An agent that wants to
+    pull a report or transition a campaign line must call the REST operations directly with an Entra
+    client-credentials token. See mcp/jeeng-tool-crosswalk.yml for the operation inventory a future
+    tool layer would bind to.
+x-evidence:
+- url: https://developers.jeeng.com/mcp
+  http_status: 200
+  method: GET
+  note: '"This URL can only be accessed with a MCP client."'
+- url: https://developers.jeeng.com/mcp
+  http_status: 401
+  method: POST
+  note: JSON-RPC initialize rejected — Authorization required
+- url: https://developers.jeeng.com/.well-known/oauth-protected-resource
+  http_status: 404
+checked: '2026-08-12'

@@ -1,0 +1,90 @@
+generated: '2026-08-12'
+method: searched
+source: registry.npmjs.org, pypi.org, api.github.com, https://developers.jeeng.com/
+summary: Jeeng ships no client library for the Email Monetization APIs. The developer hub documents
+  raw HTTP only — a form-encoded token request to Microsoft Entra ID and Bearer-token calls to
+  powerinbox.azure-api.net — and names no SDK in any language. No SDKs pointer is wired in apis.yml
+  because no first-party client library for these APIs exists.
+official_package_count: 0
+packages: []
+unverified:
+- language: javascript
+  registry: npm
+  name: cordova-plugin-jeeng
+  url: https://www.npmjs.com/package/cordova-plugin-jeeng
+  version: 1.0.5
+  published: '2019-05-14'
+  npm_maintainer: jeeng
+  repository: https://github.com/jeeng/cordova-plugin-jeeng-sdk
+  official: false
+  description: "Jeeng Cordova Plugin — \"allows android apps to create additional revenue by\
+    \ displaying ads\"."
+  attribution_note: Published 2019 by the npm account `jeeng`, alongside github.com/jeeng
+    (android-native-sdk, ios-sdk, cordova, analytics — a MOBILE app monetization SDK vendor, last
+    active 2019). PowerInbox did not rebrand to Jeeng until 2020, and the confirmed corporate GitHub
+    org for this company is `powerinbox` (display name "Jeeng", blog https://jeeng.com) which has
+    ZERO public repositories. Attribution to this company is therefore unproven, the package is
+    unrelated to the Email Monetization APIs profiled here, and it is deliberately NOT marked
+    official.
+- language: javascript
+  registry: npm
+  name: jeeng-pg
+  url: https://www.npmjs.com/package/jeeng-pg
+  version: 1.4.2
+  published: '2018-09-13'
+  npm_maintainer: outsidenote
+  official: false
+  description: Internal postgres helper "for jeeng projects" — an internal utility, not a client
+    library. Same attribution ambiguity as above; published by the npm account `outsidenote`.
+- language: javascript
+  registry: npm
+  name: jeeng-redis
+  url: https://www.npmjs.com/package/jeeng-redis
+  version: 1.4.0
+  published: '2018-03-19'
+  npm_maintainer: outsidenote
+  official: false
+  description: Internal redis helper. Not a client library for any Jeeng API.
+- language: javascript
+  registry: npm
+  name: jeeng-utils
+  url: https://www.npmjs.com/package/jeeng-utils
+  version: 1.0.2
+  published: '2017-12-11'
+  npm_maintainer: outsidenote
+  official: false
+  description: '"A collection of util helper functions for jeeng projects." Internal, not a client
+    library.'
+- language: javascript
+  registry: npm
+  name: jeeng-configs-cache
+  url: https://www.npmjs.com/package/jeeng-configs-cache
+  version: 1.0.4
+  published: '2017-12-23'
+  npm_maintainer: outsidenote
+  official: false
+  description: Internal config cache helper. Not a client library.
+registries_searched:
+- registry: npm
+  query: jeeng, powerinbox, revenuestripe
+  first_party_client_libraries: 0
+- registry: pypi
+  query: jeeng, powerinbox
+  status: 404
+  first_party_client_libraries: 0
+- registry: github
+  org: powerinbox
+  status: 200
+  public_repos: 0
+  note: The company's own GitHub organization is public but empty.
+- registry: github
+  org: jeeng
+  status: 404
+  note: No organization by that name; `jeeng` exists as a USER account with 8 repos, all mobile-SDK
+    work last touched in 2019 (see attribution note above).
+integration_distribution:
+  note: Publisher integration is not distributed as a package at all. It is done with merge tags,
+    per-newsletter ad tags, `cs_email` tracking parameters and a direct Google Ad Manager
+    integration, all configured through the portal with an account manager — there is nothing to
+    install and therefore nothing to version.
+checked: '2026-08-12'

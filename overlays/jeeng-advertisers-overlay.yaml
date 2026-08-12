@@ -1,0 +1,44 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Jeeng Email Monetization — Advertisers API
+  version: 1.0.0
+extends: openapi/_original/jeeng-advertisers.json
+generated: '2026-08-12'
+method: generated
+source: openapi/_original/jeeng-advertisers.json
+rationale: 'Jeeng''s developer hub publishes each operation''s OpenAPI 3.1.0 fragment separately and exposes no
+  whole-file download, so openapi/_original/ holds the fragments merged back together byte-faithfully. This overlay
+  records the ONLY changes API Evangelist made on top of that: descriptive info metadata, contact details taken
+  from the provider''s own docs, and externalDocs. No operation, parameter, schema or security requirement is altered.'
+actions:
+- target: $.info
+  description: Name the API and describe it; the published fragments carry only a bare title and version.
+  update:
+    title: Jeeng Email Monetization — Advertisers API
+    description: 'Advertiser-side campaign management and reporting for the Jeeng / OpenWeb Email Monetization platform:
+      update campaign lines and their budget/pricing, transition campaign line and creative status, and pull campaign,
+      campaign-line and flexible advertiser performance reports (OData V4 query and response format).'
+- target: $.info
+  description: Add the support contact Jeeng publishes in its Getting Started guide.
+  update:
+    contact:
+      name: Jeeng Technical Support
+      email: support@jeeng.com
+      url: https://developers.jeeng.com/
+- target: $
+  description: Point at the provider reference the definition was assembled from.
+  update:
+    externalDocs:
+      description: Jeeng / OpenWeb Email Monetization developer documentation
+      url: https://developers.jeeng.com/reference
+- target: $.components.securitySchemes['sec0']
+  description: Fill in the OAuth 2.0 client-credentials flow the provider documents on its authentication page.
+    The published scheme declares type oauth2 with an EMPTY flows object, so an agent reading the spec alone cannot
+    obtain a token.
+  update:
+    flows:
+      clientCredentials:
+        tokenUrl: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/oauth2/v2.0/token
+        scopes:
+          api://revenuestripe.onmicrosoft.com/partners/.default: All partner API endpoints — advertiser and publisher
+            reporting, campaigns, creatives, and the performance reports.

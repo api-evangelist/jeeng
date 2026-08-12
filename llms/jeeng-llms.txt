@@ -1,31 +1,66 @@
-# Jeeng
+# Email Monetization Documentation
 
-> Jeeng (formerly PowerInbox) is a multichannel monetization and audience-engagement platform for digital publishers, spanning email newsletters, the web, push notifications, and newsreader apps across 150M+ opt-in subscribers. Jeeng publishes no public developer API; publisher integration is handled through merge tags, per-newsletter ad tags, cs_email tracking parameters, and direct Google Ad Manager (GAM) integration, with campaigns and reporting managed through the PowerInbox Portal.
+> OpenWeb Email Monetization documentation
 
-## Products
+## Guides
+- [Getting Started](https://developers.jeeng.com/docs/getting-started.md): Welcome to OpenWeb Email Monetization!
+- [Overview](https://developers.jeeng.com/docs/publisher-overview.md)
+- [Containers](https://developers.jeeng.com/docs/containers.md)
+- [Container Details](https://developers.jeeng.com/docs/container-details.md)
+- [Placements](https://developers.jeeng.com/docs/placements.md): Docs about placements
+- [Placement Details](https://developers.jeeng.com/docs/placement-details.md)
+- [Render Check](https://developers.jeeng.com/docs/render-check.md)
+- [Reporting](https://developers.jeeng.com/docs/publisher-reporting.md)
+- [How Revenue Is Calculated](https://developers.jeeng.com/docs/how-revenue-is-calculated.md)
+- [Understanding Adjusted Opens (Apple Mail Privacy Protection)](https://developers.jeeng.com/docs/understanding-adjusted-opens-apple-mail-privacy-protection.md)
+- [Improving Placement Performance](https://developers.jeeng.com/docs/improving-placement-performance.md)
+- [CNAME / White labeling](https://developers.jeeng.com/docs/publisher-cname.md): Branded domains are useful for deliverability and user experience
+- [Consent Management](https://developers.jeeng.com/docs/publisher-consent-management.md)
+- [Ads.txt](https://developers.jeeng.com/docs/publisher-ads-txt.md)
+- [Billing](https://developers.jeeng.com/docs/publisher-billing.md)
+- [Ad Units](https://developers.jeeng.com/docs/publisher-adserver-adunits.md): Setting up ad units for email
+- [Waterfall](https://developers.jeeng.com/docs/publisher-adserver-waterfall.md): When using GAM for direct sold in email, there are a few backfill options when you have nothing trafficked in GAM.
+- [Ad Sizes](https://developers.jeeng.com/docs/publisher-adserver-ad-sizes.md): GAM integration does support multiple ad sizes in the same ad unit
+- [Key-values](https://developers.jeeng.com/docs/publisher-adserve-key-values.md): URL macros in image and click URLs
+- [Native templates](https://developers.jeeng.com/docs/publisher-adserve-native-templates.md)
+- [Reporting](https://developers.jeeng.com/docs/publisher-adserve-reporting.md)
+- [Basic troubleshooting](https://developers.jeeng.com/docs/publisher-basic-troubleshooting.md): If you are having issues with your ad placements, you can take a few steps to streamline further troubleshooting by our team
+- [Reporting discrepancies](https://developers.jeeng.com/docs/publisher-discrepancies.md): When viewing ESP data versus GAM or our reporting data, you will see discrepancies for a variety of reasons.
+- [Click issues](https://developers.jeeng.com/docs/publisher-click-issues.md): If clicks are not redirecting to the correct ad landing page in your newsletter, please follow the troubleshooting steps below.
+- [Ad blocking / verification services](https://developers.jeeng.com/docs/publisher-ad-blocking-verification-services.md)
+- [Direct sold ad campaigns](https://developers.jeeng.com/docs/publisher-troubleshoot-direct-sold-ad-campaigns.md)
+- [Re-using placements between newsletters](https://developers.jeeng.com/docs/publisher-re-using-placements-between-newsletters.md)
+- [Inbox placement](https://developers.jeeng.com/docs/publisher-inbox-placement.md)
+- [Overview](https://developers.jeeng.com/docs/advertiser-overview.md)
+- [Email Advertising vs Web Advertising](https://developers.jeeng.com/docs/understanding-email-advertising-vs-web-advertising.md)
+- [Glossary of Email Advertising Terms](https://developers.jeeng.com/docs/glossary-of-email-advertising-terms.md)
+- [How Campaign Delivery Works](https://developers.jeeng.com/docs/how-campaign-delivery-works.md)
+- [Best practices](https://developers.jeeng.com/docs/advertiser-campaign-best-practices.md)
+- [Campaign tracking](https://developers.jeeng.com/docs/advertiser-campaign-tracking.md): URL macros in click & impression tracking URLs
+- [Campaigns List](https://developers.jeeng.com/docs/campaigns-list.md)
+- [Campaign Details](https://developers.jeeng.com/docs/campaign-details.md)
+- [Campaign Lines](https://developers.jeeng.com/docs/campaign-lines.md)
+- [Dayparting](https://developers.jeeng.com/docs/advertiser-dayparting.md): How to use dayparting with email supply
+- [Reporting](https://developers.jeeng.com/docs/advertiser-reporting.md)
+- [Metric Definitions](https://developers.jeeng.com/docs/metric-definitions.md)
+- [How to Analyze Campaign Performance](https://developers.jeeng.com/docs/how-to-analyze-campaign-performance.md)
+- [Reporting Best Practices](https://developers.jeeng.com/docs/reporting-best-practices.md)
+- [Common Reporting Questions & Misconceptions](https://developers.jeeng.com/docs/common-reporting-questions-misconceptions.md)
+- [Proxy Impression vs User Impression](https://developers.jeeng.com/docs/proxy-impression-vs-user-impression.md)
+- [Creative specifications](https://developers.jeeng.com/docs/programmatic-creative-specifications.md)
+- [Proxy and device/geo targeting](https://developers.jeeng.com/docs/programmatic-proxy-and-devicegeo-targeting.md): Understand email traffic and how to target proxy traffic
+- [Opt-out & DSR requests](https://developers.jeeng.com/docs/privacy-optout-dsr.md)
+- [IVT detection](https://developers.jeeng.com/docs/ivt-detection.md): Invalid Traffic (IVT) detection & filtering is done through a combination of different systems
+- [Privacy Policy](https://developers.jeeng.com/docs/privacy-policy.md)
 
-- [Jeeng AdFill](https://www.jeeng.com/): Automatically fills vacant ad inventory with monetized content.
-- [Jeeng AdServe](https://www.jeeng.com/): Extends direct ad campaigns into email through existing ad servers.
-- [Jeeng AdMarket](https://www.jeeng.com/): Connects advertisers with 150M+ unique opt-in subscribers in email, on the web, and in push.
-- [Jeeng Renderer](https://www.jeeng.com/): Streamlines Google Ad Manager ad-ops workflows.
-
-## Company
-
-- [About / Company](https://www.jeeng.com/company/): Company overview and leadership.
-- [FAQ](https://www.jeeng.com/faq/): How publishers integrate (merge tags, ad tags, cs_email, GAM).
-- [Careers](https://www.jeeng.com/careers/): Open roles.
-- [Contact / Support](https://www.jeeng.com/contact-us/): Reach account management and support.
-- [PowerInbox Portal](https://manage.jeeng.com/): Publisher login for campaign management and reporting.
-
-## News
-
-- [Newsroom / Blog](https://www.jeeng.com/news/): Dated news and industry coverage.
-
-## Legal
-
-- [Terms of Use](https://www.jeeng.com/terms-of-use/)
-- [Privacy Policy](https://www.jeeng.com/privacy-policy/)
-
-## API Evangelist artifacts
-
-- [Domain security probe](https://raw.githubusercontent.com/api-evangelist/jeeng/refs/heads/main/security/jeeng-domain-security.yml): TLS/HSTS/SPF/DMARC posture for jeeng.com.
+## API Reference
+- [Getting an access token](https://developers.jeeng.com/reference/getting-an-access-token.md)
+- [Update](https://developers.jeeng.com/reference/management-line-update.md): Update a campaign line.
+- [Update Status](https://developers.jeeng.com/reference/management-line-status.md): Update a campaign line status between running, paused and archived.
+- [Update Status](https://developers.jeeng.com/reference/management-creative-status.md): Update a creative status between running, paused and archived.
+- [Campaigns Report](https://developers.jeeng.com/reference/reporting-campaigns.md): Retrieve a campaign report with daily or hourly grain. The query and response are OData V4 format. The response may include a "next" link.
+- [Campaign Lines Report](https://developers.jeeng.com/reference/reporting-campaign-lines.md): Retrieve a campaign line report with daily or hourly grain.
+- [Advertiser Performance Report](https://developers.jeeng.com/reference/reporting-advertiser-performance.md): Retrieve a flexible advertiser performance report by specifying the fields, filters, and grouping you need.
+- [Containers Report](https://developers.jeeng.com/reference/reporting-containers.md): Retrieve container reports with a daily grain.
+- [Placements Report](https://developers.jeeng.com/reference/reporting-placements.md): Retrieve placement reports with a daily grain
+- [Publisher Performance Report](https://developers.jeeng.com/reference/reporting-publisher-performance.md): Retrieve a flexible publisher performance report by specifying the fields, filters, and grouping you need.

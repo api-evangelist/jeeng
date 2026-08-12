@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for Jeeng Email Monetization — Authentication (OAuth 2.0 token)
+  version: 1.0.0
+extends: openapi/_original/jeeng-authentication.json
+generated: '2026-08-12'
+method: generated
+source: openapi/_original/jeeng-authentication.json
+rationale: 'Jeeng''s developer hub publishes each operation''s OpenAPI 3.1.0 fragment separately and exposes no
+  whole-file download, so openapi/_original/ holds the fragments merged back together byte-faithfully. This overlay
+  records the ONLY changes API Evangelist made on top of that: descriptive info metadata, contact details taken
+  from the provider''s own docs, and externalDocs. No operation, parameter, schema or security requirement is altered.'
+actions:
+- target: $.info
+  description: Name the API and describe it; the published fragments carry only a bare title and version.
+  update:
+    title: Jeeng Email Monetization — Authentication (OAuth 2.0 token)
+    description: Microsoft Entra ID (Azure AD) client-credentials token endpoint for the Jeeng / OpenWeb Email Monetization
+      partner APIs. Credentials (client id + client secret) are provisioned by Jeeng technical support; tokens must
+      be requested with the scope api://revenuestripe.onmicrosoft.com/partners/.default.
+- target: $.info
+  description: Add the support contact Jeeng publishes in its Getting Started guide.
+  update:
+    contact:
+      name: Jeeng Technical Support
+      email: support@jeeng.com
+      url: https://developers.jeeng.com/
+- target: $
+  description: Point at the provider reference the definition was assembled from.
+  update:
+    externalDocs:
+      description: Jeeng / OpenWeb Email Monetization developer documentation
+      url: https://developers.jeeng.com/reference

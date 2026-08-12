@@ -1,0 +1,66 @@
+generated: '2026-08-12'
+method: probed
+source: https://developers.jeeng.com/reference, live probe of
+  https://powerinbox.azure-api.net/reporting/containers?api-version=1.0
+summary: Jeeng publishes no rate limits for the Email Monetization APIs, and no rate-limit headers
+  were observed on a live response. What the docs DO publish are request-shape constraints on the
+  reporting endpoints — a hard 32-day maximum date range and a required date filter — which bound
+  how much data one call can pull without being a throttle.
+limit_count: 0
+limits: []
+response_headers:
+  rate_limit_headers_documented: []
+  rate_limit_headers_observed: []
+  retry_after: not documented, not observed
+  exhaustion_status_code: not documented
+  observed_headers:
+  - Content-Length
+  - Content-Type
+  - Request-Context
+  - Date
+  note: >-
+    An unauthenticated GET to the containers report returned HTTP 401 with
+    `{ "statusCode": 401, "message": "Unauthorized" }` and carried no RateLimit-*, X-RateLimit-* or
+    Retry-After header. The host is Azure API Management, whose rate-limit policies are optional and
+    invisible to an anonymous caller — so this is evidence of nothing published, not proof no
+    throttle exists behind authentication.
+request_constraints:
+- constraint: maximum date range
+  value: 32 days
+  applies_to:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  enforcement: HTTP 400
+  source: https://developers.jeeng.com/reference/reporting-advertiser-performance
+- constraint: date filter required
+  value: '$filter is a required query parameter on every grain report (e.g. `Date eq 2023-12-13Z`)'
+  applies_to:
+  - reporting-campaigns
+  - reporting-campaign-lines
+  - reporting-containers
+  - reporting-placements
+  enforcement: HTTP 400
+- constraint: minimum time grain
+  value: hourly
+  applies_to:
+  - reporting-campaigns
+  - reporting-campaign-lines
+  note: The portal exposes minute and second groupings but the lowest supported granularity is
+    hourly.
+- constraint: groupBy fields must be present in requestedFields
+  applies_to:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  enforcement: HTTP 400
+quotas:
+  published: false
+  note: No call quota, concurrency limit or report-size cap is published, and none is attached to a
+    plan because no plans exist (see plans/jeeng-plans-pricing.yml).
+x-evidence:
+- url: https://powerinbox.azure-api.net/reporting/containers?api-version=1.0
+  http_status: 401
+  fetched: '2026-08-12'
+- url: https://developers.jeeng.com/reference/reporting-advertiser-performance.md
+  http_status: 200
+  fetched: '2026-08-12'
+checked: '2026-08-12'

@@ -1,0 +1,96 @@
+generated: '2026-08-12'
+method: derived
+source: openapi/jeeng-advertisers-openapi.yml, openapi/jeeng-publishers-openapi.yml,
+  openapi/jeeng-authentication-openapi.yml, https://developers.jeeng.com/reference
+summary: What the Jeeng / OpenWeb Email Monetization APIs do and do not conform to, asserted only
+  where the provider's own published contract or documentation says so.
+standards:
+- id: openapi
+  version: 3.1.0
+  conforms: true
+  evidence: >-
+    All three published definitions declare `openapi: 3.1.0`. They are published per
+    operation on the developer hub rather than as downloadable whole files.
+- id: oauth2
+  conforms: true
+  evidence: RFC 6749 client-credentials grant against the Microsoft Entra ID v2.0 token endpoint;
+    `grant_type=client_credentials`, form-encoded client_id/client_secret/scope, Bearer token in the
+    Authorization header. Documented at
+    https://developers.jeeng.com/reference/getting-an-access-token.
+- id: oidc
+  conforms: partial
+  evidence: The identity provider (Microsoft Entra ID, tenant revenuestripe.onmicrosoft.com) serves
+    a full OpenID Connect discovery document (probed 200 on 2026-08-12), but Jeeng uses only the
+    machine-to-machine token flow — no id_token, no user authentication, and Jeeng itself serves no
+    /.well-known/openid-configuration.
+- id: odata
+  version: '4.0'
+  conforms: true
+  evidence: 'The campaigns report states "The query and response are OData V4 format." Four
+    reporting operations require an OData `$filter` expression, and the response may include a
+    `next` link.'
+- id: rfc9457
+  conforms: false
+  evidence: Errors are returned as the Azure API Management envelope
+    `{"statusCode":..,"message":..}` with content-type application/json, not
+    application/problem+json. Observed live on an unauthenticated call (401) and a missing path
+    (404).
+- id: idempotency
+  conforms: false
+  evidence: No idempotency key, header or replay guarantee is documented for the three write
+    operations.
+- id: pagination
+  conforms: partial
+  evidence: OData `next` link is mentioned for the campaigns report only; no page-size, skip or
+    top parameter is published, and the response envelope is not described in any schema.
+- id: rfc8594
+  conforms: false
+  evidence: >-
+    No Deprecation or Sunset headers and no deprecation policy are published; every
+    published operation sets `deprecated: false`.
+- id: rfc9116
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.jeeng.com, developers.jeeng.com and
+    powerinbox.azure-api.net.
+- id: asyncapi
+  conforms: false
+  evidence: No event, webhook or streaming surface is documented, so there is nothing to describe.
+    Not a deficiency — the platform is request/response only.
+compliance_programs:
+  published: false
+  certifications: []
+  note: No SOC 2, ISO 27001, PCI or other certification is named on the developer hub, the
+    marketing site or a trust center. Privacy obligations are pushed to the publisher through the
+    Monetization Terms and Conditions and a Data Processing Agreement, and Jeeng operates a privacy
+    preferences / DSR page at https://setup.jeeng.com/preferences plus a privacy@jeeng.com opt-out
+    ingestion process — a GDPR/CCPA operating posture, not a published certification. No
+    `Compliance` pointer is wired because nothing certified is published.
+regulatory_context:
+- regime: GDPR / CCPA-CPRA
+  role: processor for publisher first-party data; requires publishers to collect unconditional
+    consent and provides opt-out ingestion (form, weekly email list, or custom API for large
+    accounts)
+  source: https://developers.jeeng.com/docs/privacy-optout-dsr
+industry_practices:
+- id: ads.txt
+  conforms: true
+  evidence: Publishers are instructed to add Jeeng's authorized-seller entries; documented at
+    https://developers.jeeng.com/docs/publisher-ads-txt.
+- id: ivt-detection
+  conforms: true
+  evidence: 'Invalid Traffic detection and filtering is applied through "a combination of different
+    systems" — https://developers.jeeng.com/docs/ivt-detection.'
+- id: apple-mpp-adjustment
+  conforms: true
+  evidence: Reporting exposes explicit "adjusted opens" columns that apply a correction factor for
+    Apple Mail Privacy Protection preloads; CTR and RPM are computed on adjusted opens.
+x-evidence:
+- url: https://developers.jeeng.com/reference/reporting-campaigns.md
+  http_status: 200
+- url: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/v2.0/.well-known/openid-configuration
+  http_status: 200
+- url: https://powerinbox.azure-api.net/.well-known/security.txt
+  http_status: 404
+- url: https://developers.jeeng.com/docs/privacy-optout-dsr.md
+  http_status: 200
+checked: '2026-08-12'

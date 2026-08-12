@@ -1,0 +1,39 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.jeeng.com/reference/getting-an-access-token
+docs: https://developers.jeeng.com/reference/getting-an-access-token
+identity_provider: Microsoft Entra ID (Azure AD)
+tenant: revenuestripe.onmicrosoft.com
+token_url: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/oauth2/v2.0/token
+flow: client_credentials
+scheme: sec0
+scopes:
+- scope: api://revenuestripe.onmicrosoft.com/partners/.default
+  description: The single partner scope for the Jeeng / OpenWeb Email Monetization APIs. Grants the
+    permissions for all partner API endpoints — advertiser and publisher reporting, campaigns,
+    creatives, and the performance reports.
+  applies_to:
+  - openapi/jeeng-advertisers-openapi.yml
+  - openapi/jeeng-publishers-openapi.yml
+  required: true
+  source: https://developers.jeeng.com/reference/getting-an-access-token
+scope_count: 1
+granularity: coarse
+notes:
+- Jeeng publishes exactly one scope. It is an Entra ID `.default` application scope, so consent is
+  granted at the application-registration level rather than per-endpoint; there is no read-only vs
+  write split, and no separate advertiser vs publisher scope.
+- 'Requesting any other scope is documented as the most common cause of an HTTP 401 with the message
+  "Not authorized to this endpoint." Because a token issued for the wrong scope can still succeed on
+  some endpoints, the failure typically appears only on the performance report endpoints.'
+- >-
+  The OpenAPI `securitySchemes.sec0` object published for both APIs declares `type: oauth2` with an
+  empty `flows` object and therefore carries no machine-readable scope list; the scope above comes
+  from the provider's own authentication reference page.
+x-evidence:
+- url: https://developers.jeeng.com/reference/getting-an-access-token.md
+  http_status: 200
+  fetched: '2026-08-12'
+- url: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/v2.0/.well-known/openid-configuration
+  http_status: 200
+  fetched: '2026-08-12'

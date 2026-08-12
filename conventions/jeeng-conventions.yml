@@ -1,0 +1,123 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.jeeng.com/reference
+derived_from:
+- openapi/jeeng-advertisers-openapi.yml
+- openapi/jeeng-publishers-openapi.yml
+- openapi/jeeng-authentication-openapi.yml
+summary: Cross-cutting runtime semantics for the Jeeng / OpenWeb Email Monetization partner APIs,
+  read from the published OpenAPI fragments and the developer hub. The platform is Azure API
+  Management fronting an OData V4 reporting service; the two "performance" endpoints break that
+  pattern and hand back a 303 redirect to a CSV file instead of a JSON body.
+auth:
+  style: OAuth 2.0 client credentials (Microsoft Entra ID) — Authorization Bearer header
+  token_url: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/oauth2/v2.0/token
+  scope: api://revenuestripe.onmicrosoft.com/partners/.default
+  provisioning: account-manager provisioned client id + secret; no self-serve signup
+  see: authentication/jeeng-authentication.yml
+versioning:
+  style: required query parameter
+  parameter: api-version
+  current: '1.0'
+  required: true
+  applies_to: every operation on powerinbox.azure-api.net
+  note: This is the Azure API Management convention. The version is not in the path and not in a
+    header; omitting `api-version` is a request error, not a default-to-latest.
+  see: lifecycle/jeeng-lifecycle.yml
+query_language:
+  style: OData V4
+  parameter: $filter
+  required: true
+  applies_to:
+  - reporting-campaigns
+  - reporting-campaign-lines
+  - reporting-containers
+  - reporting-placements
+  example: Date eq 2023-12-13Z
+  note: 'The reporting endpoints state plainly: "The query and response are OData V4 format."
+    $filter is marked required, so a caller must always scope a report by at least a date.'
+pagination:
+  style: OData next link
+  response_field: next
+  documented: partial
+  note: 'The campaigns report documents that "The response may include a ''next'' link." No page-size
+    or skip-token parameter is published, and the published response schemas do not name the
+    envelope fields, so an agent has to follow the link opportunistically rather than plan paging.'
+report_delivery:
+  style: 303 redirect to CSV
+  applies_to:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  request_header: 'Accept: text/csv (required)'
+  behavior: The endpoint answers 303 See Other with a Location header; following the redirect
+    downloads the report body as CSV. Most HTTP clients follow it automatically.
+  note: These two endpoints are the flexible reporting surface — the caller names requestedFields,
+    optional filter[Field]=value pairs and groupBy fields — and they are the only operations in the
+    catalog that do not return JSON.
+field_selection:
+  parameter: requestedFields
+  style: comma-separated field list
+  required: true
+  applies_to:
+  - reporting-advertiser-performance
+  - reporting-publisher-performance
+  rule: every field named in groupBy must also appear in requestedFields, or the request is a 400.
+filtering:
+  odata: $filter (OData V4 expression) on the four grain reports
+  key_value: filter[Field]=value pairs on the two performance reports
+  note: The two filter idioms are NOT interchangeable — the performance reports use bracketed
+    key/value pairs, the grain reports use an OData expression.
+time:
+  timezone: UTC throughout; the portal states timestamps "are displayed in UTC and cannot be
+    adjusted for the time being"
+  range_parameters:
+  - startInclusive
+  - endExclusive
+  range_semantics: half-open [start, end)
+  max_range_days: 32
+  grains:
+  - hourly
+  - daily
+  note: The reporting portal exposes yearly/monthly/weekly/daily/hourly groupings; hourly is the
+    lowest supported granularity even though minute and second appear in the UI.
+metrics_semantics:
+  apple_mpp: '"Adjusted" columns apply a correction factor for Apple Mail Privacy Protection
+    preloads. CTR and RPM are calculated with adjusted opens, so adjusted and raw opens are not
+    interchangeable between reports.'
+  invalid_traffic: Invalid Traffic (IVT) detection and filtering is applied before reporting.
+  authority: 'Revenue figures in reporting are marked indicative only: "Please refer to your
+    payment invoice for final revenue numbers."'
+idempotency:
+  supported: false
+  header: null
+  note: No idempotency key, request-replay or dedupe mechanism is documented. The write surface is
+    three operations (PUT a campaign line, POST a line status transition, POST a creative status
+    transition); the two transitions are naturally idempotent by virtue of naming a target state,
+    but the provider makes no idempotency guarantee and publishes no key.
+request_tracing:
+  request_id_header: null
+  observed: Azure API Management returns a `Request-Context` header carrying an appId on
+    unauthenticated responses; no correlation-id header is documented for callers.
+  note: The token endpoint's own error envelope does return `trace_id` and `correlation_id`, but
+    those are Microsoft Entra fields, not Jeeng API fields.
+errors:
+  envelope: '{"statusCode": <int>, "message": "<string>"}'
+  format: proprietary (Azure API Management default) — NOT RFC 9457 problem+json
+  see: errors/jeeng-problem-types.yml
+rate_limits:
+  published: false
+  see: rate-limits/jeeng-rate-limits.yml
+webhooks:
+  published: false
+  note: No webhook, callback or event surface is documented anywhere in the developer hub, and no
+    AsyncAPI is published.
+x-evidence:
+- url: https://developers.jeeng.com/reference/reporting-advertiser-performance.md
+  http_status: 200
+- url: https://developers.jeeng.com/reference/reporting-campaigns.md
+  http_status: 200
+- url: https://developers.jeeng.com/docs/publisher-reporting.md
+  http_status: 200
+- url: https://powerinbox.azure-api.net/reporting/containers?api-version=1.0
+  http_status: 401
+checked: '2026-08-12'

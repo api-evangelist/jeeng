@@ -1,0 +1,82 @@
+generated: '2026-08-12'
+method: probed
+source: live probes of /.well-known/ on every Jeeng host named in apis.yml and the OpenAPI servers[]
+summary: Nothing is served. Every /.well-known/ path probed on all four Jeeng-controlled hosts
+  returned 404, including security.txt. No WellKnown or SecurityTxt pointer is wired in apis.yml
+  because no path returned a document — this file records a verified absence, not a presence.
+hosts:
+- host: https://www.jeeng.com
+  role: marketing site (WordPress on WP Engine)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    note: served, but a robots file is not a discovery document — not indexed as a hit
+- host: https://developers.jeeng.com
+  role: developer hub (ReadMe, readme-subdomain "jeeng")
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/jeeng-llms.txt
+    note: served at the docs root rather than under /.well-known/; saved verbatim and wired as
+      type LLMsTxt.
+- host: https://powerinbox.azure-api.net
+  role: API host (Azure API Management) for the advertiser and publisher APIs
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+related:
+- host: https://login.microsoftonline.com
+  role: not a Jeeng host — Microsoft Entra ID issues the partner tokens for the Jeeng tenant
+  documents:
+  - path: /revenuestripe.onmicrosoft.com/v2.0/.well-known/openid-configuration
+    status: 200
+    note: Microsoft's discovery document for the tenant Jeeng uses. Recorded as evidence in
+      authentication/jeeng-authentication.yml and scopes/jeeng-scopes.yml. NOT counted as a Jeeng
+      well-known document, because Jeeng does not serve it.
+checked: '2026-08-12'

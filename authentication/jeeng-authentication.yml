@@ -1,0 +1,73 @@
+generated: '2026-08-12'
+method: searched
+source: https://developers.jeeng.com/reference/getting-an-access-token
+docs: https://developers.jeeng.com/reference/getting-an-access-token
+summary:
+  types:
+  - oauth2
+  primary: oauth2
+  flow: client_credentials
+  token_placement: Authorization Bearer header
+  provisioning: sales-gated — client id and client secret are issued by Jeeng technical support / the
+    account manager; there is no self-serve developer signup.
+schemes:
+- name: sec0
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/oauth2/v2.0/token
+    scopes:
+      api://revenuestripe.onmicrosoft.com/partners/.default: Grants the permissions for all partner
+        API endpoints — advertiser and publisher reporting, campaigns, creatives, and the
+        performance reports.
+  identity_provider: Microsoft Entra ID (Azure AD)
+  tenant: revenuestripe.onmicrosoft.com
+  tenant_id: 0d82cfa7-eb30-4eb7-83e2-574580d8fb08
+  discovery: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/v2.0/.well-known/openid-configuration
+  sources:
+  - openapi/jeeng-authentication-openapi.yml
+  - openapi/jeeng-advertisers-openapi.yml
+  - openapi/jeeng-publishers-openapi.yml
+request:
+  method: POST
+  content_type: application/x-www-form-urlencoded
+  required_fields:
+  - client_id
+  - client_secret
+  - grant_type
+  - scope
+  grant_type: client_credentials
+  scope: api://revenuestripe.onmicrosoft.com/partners/.default
+response:
+  token_type: Bearer
+  expires_in: 3599
+  fields:
+  - token_type
+  - expires_in
+  - ext_expires_in
+  - access_token
+usage:
+  header: 'Authorization: Bearer <access_token>'
+  applies_to:
+  - https://powerinbox.azure-api.net/
+notes:
+- >-
+  The OpenAPI securityScheme Jeeng publishes for the advertiser and publisher APIs declares
+  `type: oauth2` with an empty `flows` object; the flow, token URL and scope below are read from the
+  provider's own authentication reference page rather than from the spec.
+- 'Documented failure mode: requesting a token with any scope other than the partners scope returns
+  HTTP 401 with the message "Not authorized to this endpoint." — and because a wrong-scope token can
+  still succeed on some endpoints, it often surfaces only on the performance report endpoints.'
+- The tenant discovery document at login.microsoftonline.com was probed anonymously on 2026-08-12
+  (HTTP 200) and confirms the issuer and token endpoint above.
+x-evidence:
+- url: https://developers.jeeng.com/reference/getting-an-access-token.md
+  http_status: 200
+  fetched: '2026-08-12'
+- url: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/v2.0/.well-known/openid-configuration
+  http_status: 200
+  fetched: '2026-08-12'
+- url: https://powerinbox.azure-api.net/reporting/containers?api-version=1.0
+  http_status: 401
+  fetched: '2026-08-12'
+  note: unauthenticated call returns {"statusCode":401,"message":"Unauthorized"}
