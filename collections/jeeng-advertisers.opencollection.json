@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jeeng Email Monetization — Advertisers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Update Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://powerinbox.azure-api.net/management/creative/:id/transition/:status",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The creative ID"
+          },
+          {
+            "name": "status",
+            "value": "",
+            "type": "path",
+            "description": "The creative status"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Update a creative status between running, paused and archived."
+    },
+    {
+      "info": {
+        "name": "Update Status",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://powerinbox.azure-api.net/management/line/:id/transition/:status",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The campaign line ID"
+          },
+          {
+            "name": "status",
+            "value": "",
+            "type": "path",
+            "description": "The campaign line status"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Update a campaign line status between running, paused and archived."
+    },
+    {
+      "info": {
+        "name": "Update",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://powerinbox.azure-api.net/management/line/:id",
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The campaign line ID"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update a campaign line."
+    },
+    {
+      "info": {
+        "name": "Advertiser Performance Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/advertiserperformance",
+        "headers": [
+          {
+            "name": "Accept",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "requestedFields",
+            "value": "",
+            "type": "query",
+            "description": "Comma-separated list of fields to include in the results"
+          },
+          {
+            "name": "startInclusive",
+            "value": "",
+            "type": "query",
+            "description": "Start of the date range (inclusive)"
+          },
+          {
+            "name": "endExclusive",
+            "value": "",
+            "type": "query",
+            "description": "End of the date range (exclusive)"
+          },
+          {
+            "name": "filter",
+            "value": "",
+            "type": "query",
+            "description": "Key-value filter pairs (e.g. filter[CampaignId]=123)"
+          },
+          {
+            "name": "groupBy",
+            "value": "",
+            "type": "query",
+            "description": "Comma-separated list of fields to group results by"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Retrieve a flexible advertiser performance report by specifying the fields, filters, and grouping you need. The endpoint returns a 303 redirect with a Location header. Follow the redirect to download the report data as CSV."
+    },
+    {
+      "info": {
+        "name": "Campaign Lines Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/lines/:interval",
+        "params": [
+          {
+            "name": "$filter",
+            "value": "",
+            "type": "query",
+            "description": "OData filter expression"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          },
+          {
+            "name": "interval",
+            "value": "",
+            "type": "path",
+            "description": "The time interval"
+          }
+        ]
+      },
+      "docs": "Retrieve a campaign line report with daily or hourly grain."
+    },
+    {
+      "info": {
+        "name": "Campaigns Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/campaigns/:interval",
+        "params": [
+          {
+            "name": "$filter",
+            "value": "",
+            "type": "query",
+            "description": "OData filter expression"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          },
+          {
+            "name": "interval",
+            "value": "",
+            "type": "path",
+            "description": "The time interval for the report"
+          }
+        ]
+      },
+      "docs": "Retrieve a campaign report with daily or hourly grain. The query and response are OData V4 format. The response may include a \"next\" link."
+    }
+  ],
+  "bundled": true
+}

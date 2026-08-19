@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jeeng Email Monetization — Authentication (OAuth 2.0 token)",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Getting an access token",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://login.microsoftonline.com/revenuestripe.onmicrosoft.com/oauth2/v2.0/token",
+        "body": {
+          "type": "form-urlencoded",
+          "data": [
+            {
+              "name": "client_id",
+              "value": ""
+            },
+            {
+              "name": "client_secret",
+              "value": ""
+            },
+            {
+              "name": "grant_type",
+              "value": ""
+            },
+            {
+              "name": "scope",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "docs": "Getting an access token"
+    }
+  ],
+  "bundled": true
+}

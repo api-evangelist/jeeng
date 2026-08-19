@@ -1,0 +1,777 @@
+{
+  "item": [
+    {
+      "id": "83337b7c-ea4f-4b38-ad2c-c553657f0b17",
+      "name": "Containers Report",
+      "request": {
+        "name": "Containers Report",
+        "description": {
+          "content": "Retrieve container reports with a daily grain.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "containers"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "$filter",
+              "value": "Date eq 2023-12-13Z",
+              "description": "(Required) OData filter expression"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b844e8eb-e125-440e-ad0b-04ae2c28f679",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n    \\\"@odata.context\\\": \\\"https://.../$metadata#Containers\\\",\\n    \\\"value\\\": [{\\n            \\\"Date\\\": \\\"2019-10-01T00:00:00Z\\\",\\n            \\\"ContainerId\\\": 33,\\n            \\\"ClicksTotal\\\": 0,\\n            \\\"CompanyId\\\": 15,\\n            \\\"RequestsUnique\\\": 6,\\n            \\\"RevenueNet\\\": 0.00,\\n        },\\n        {\\n            \\\"Date\\\": \\\"2019-10-01T00:00:00Z\\\",\\n            \\\"ContainerId\\\": 36,\\n            \\\"ClicksTotal\\\": 0,\\n            \\\"CompanyId\\\": 15,\\n            \\\"RequestsUnique\\\": 5,\\n            \\\"RevenueNet\\\": 0.00,\\n        }\\n    ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "70288a30-a42a-4dee-8a13-d67fb604ebee",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "containers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6318eed6-dda8-4163-9d5e-d12773c42881",
+      "name": "Placements Report",
+      "request": {
+        "name": "Placements Report",
+        "description": {
+          "content": "Retrieve placement reports with a daily grain",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "placements"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "$filter",
+              "value": "Date eq 2023-12-13Z",
+              "description": "(Required) OData filter expression"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "582b276c-46d1-4e67-81ca-c35f74efe74f",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "placements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n    \\\"@odata.context\\\": \\\"https://.../$metadata#Placements\\\",\\n    \\\"value\\\": [{\\n            \\\"Date\\\": \\\"2019-10-01T00:00:00Z\\\",\\n            \\\"PlacementId\\\": 152,\\n            \\\"ClicksTotal\\\": 0,\\n            \\\"CompanyId\\\": 15,\\n            \\\"RequestsUnique\\\": 10,\\n            \\\"RevenueNet\\\": 0.00,\\n            \\\"RequestsTotal\\\": 20,\\n        },\\n        {\\n            \\\"Date\\\": \\\"2019-10-01T00:00:00Z\\\",\\n            \\\"PlacementId\\\": 153,\\n            \\\"ClicksTotal\\\": 0,\\n            \\\"CompanyId\\\": 15,\\n            \\\"RequestsUnique\\\": 13,\\n            \\\"RevenueNet\\\": 0.00,\\n            \\\"RequestsTotal\\\": 71,\\n        }\\n    ]\\n}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "19f57623-fddd-4866-8d54-828651e38f87",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "placements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "e7f795d1-ecb4-457a-9d30-86ab50440c27",
+      "name": "Publisher Performance Report",
+      "request": {
+        "name": "Publisher Performance Report",
+        "description": {
+          "content": "Retrieve a flexible publisher performance report by specifying the fields, filters, and grouping you need. The endpoint returns a 303 redirect with a Location header. Follow the redirect to download the report data as CSV.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "publisherperformance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "requestedFields",
+              "value": "DateTime,PlacementId,Opens,Clicks,Revenue",
+              "description": "(Required) Comma-separated list of fields to include in the results"
+            },
+            {
+              "disabled": false,
+              "key": "startInclusive",
+              "value": "2026-03-01T00:00:00Z",
+              "description": "(Required) Start of the date range (inclusive)"
+            },
+            {
+              "disabled": false,
+              "key": "endExclusive",
+              "value": "2026-04-01T00:00:00Z",
+              "description": "(Required) End of the date range (exclusive)"
+            },
+            {
+              "disabled": false,
+              "key": "filter",
+              "value": "<string>",
+              "description": "Key-value filter pairs (e.g. filter[PlacementId]=456)"
+            },
+            {
+              "disabled": false,
+              "key": "groupBy",
+              "value": "<string>",
+              "description": "Comma-separated list of fields to group results by"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "44302571-4a44-484e-80d6-b9c6f82cabfb",
+          "name": "200 - Response from following the redirect. Contains the report data as CSV.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "publisherperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,PlacementId,Opens,Clicks,Revenue"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/csv"
+            }
+          ],
+          "body": "\"DateTime\",\"PlacementId\",\"ContainerId\",\"Opens\",\"Clicks\",\"Revenue\"\n\"2026-03-01T00:00:00Z\",152,300,4820,312,148.50\n\"2026-03-02T00:00:00Z\",152,300,3210,198,96.30",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "b75684fa-0d92-4016-9bd9-d43a2cdb8594",
+          "name": "303 See Other - The endpoint returns this status code directly. The Location header contains the URL where the report data can be downloaded. Most HTTP clients follow this redirect automatically.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "publisherperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,PlacementId,Opens,Clicks,Revenue"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "See Other",
+          "code": 303,
+          "header": [
+            {
+              "disabled": false,
+              "description": "URL to download the report data. Issue a GET request to this URL to retrieve the CSV response shown above.",
+              "key": "Location",
+              "value": "string"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "f121a398-7448-4b2e-9afd-eb1c1591a7cf",
+          "name": "400 Bad Request - The request parameters are invalid. Check that all field names are valid, groupBy fields are included in requestedFields, and the date range does not exceed 32 days.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "publisherperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,PlacementId,Opens,Clicks,Revenue"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "30167cb0-6dd5-4c84-a4da-e6d3a3388a9c",
+          "name": "401 Unauthorized - The request is missing a valid access token, or the token does not have the required scope.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "publisherperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,PlacementId,Opens,Clicks,Revenue"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "4d3c2844-4962-472e-aae8-337f5983796d",
+          "name": "500 Internal Server Error - An unexpected error occurred while processing the request.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "publisherperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,PlacementId,Opens,Clicks,Revenue"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://powerinbox.azure-api.net/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": []
+  },
+  "info": {
+    "_postman_id": "2f166872-d6d2-45da-bb13-2230108cf865",
+    "name": "Jeeng Email Monetization — Publishers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Publisher-side inventory reporting for the Jeeng / OpenWeb Email Monetization platform: container and placement reports with a daily grain and a flexible publisher performance report (OData V4 query and response format).\n\nContact Support:\n Name: Jeeng Technical Support\n Email: support@jeeng.com",
+      "type": "text/plain"
+    }
+  }
+}

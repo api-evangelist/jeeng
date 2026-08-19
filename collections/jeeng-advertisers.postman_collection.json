@@ -1,0 +1,1418 @@
+{
+  "item": [
+    {
+      "id": "92a5c14b-2215-4f39-a38b-802606e5d63d",
+      "name": "Update Status",
+      "request": {
+        "name": "Update Status",
+        "description": {
+          "content": "Update a creative status between running, paused and archived.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "management",
+            "creative",
+            ":id",
+            "transition",
+            ":status"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) The creative ID"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "status",
+              "description": "(Required) The creative status"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "a853287d-1000-4711-b6f3-64e9ed04d2c7",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "creative",
+                ":id",
+                "transition",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The creative ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) The creative status"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "cc9b9cb0-34ff-4c83-ac71-071fcdab07da",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "creative",
+                ":id",
+                "transition",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The creative ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) The creative status"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "780dfa28-e39e-414d-9e98-703f21109b60",
+      "name": "Update Status",
+      "request": {
+        "name": "Update Status",
+        "description": {
+          "content": "Update a campaign line status between running, paused and archived.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "management",
+            "line",
+            ":id",
+            "transition",
+            ":status"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) The campaign line ID"
+            },
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "status",
+              "description": "(Required) The campaign line status"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "637994fe-039c-4617-aa6f-57fb9a13178d",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "line",
+                ":id",
+                "transition",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The campaign line ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) The campaign line status"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "553c5d79-3c02-435f-959e-3704d785af9e",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "line",
+                ":id",
+                "transition",
+                ":status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The campaign line ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "status",
+                  "description": "(Required) The campaign line status"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1fdd7a17-4fef-44b9-bff1-cbf93250ce37",
+      "name": "Update",
+      "request": {
+        "name": "Update",
+        "description": {
+          "content": "Update a campaign line.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "management",
+            "line",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "id",
+              "description": "(Required) The campaign line ID"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"budget\": \"<integer>\",\n  \"pricing\": {\n    \"cpc\": \"<double>\",\n    \"cpa\": \"<double>\",\n    \"cpm\": \"<double>\"\n  }\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "5975ffef-1fef-4a37-b26d-48754880c2eb",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "line",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The campaign line ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"budget\": \"<integer>\",\n  \"pricing\": {\n    \"cpc\": \"<double>\",\n    \"cpa\": \"<double>\",\n    \"cpm\": \"<double>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "bba2c705-9aa8-451c-8d8f-af46e0a8675a",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "management",
+                "line",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The campaign line ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"budget\": \"<integer>\",\n  \"pricing\": {\n    \"cpc\": \"<double>\",\n    \"cpa\": \"<double>\",\n    \"cpm\": \"<double>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "03f6d542-42f1-48b9-a6ea-1391b1f341aa",
+      "name": "Advertiser Performance Report",
+      "request": {
+        "name": "Advertiser Performance Report",
+        "description": {
+          "content": "Retrieve a flexible advertiser performance report by specifying the fields, filters, and grouping you need. The endpoint returns a 303 redirect with a Location header. Follow the redirect to download the report data as CSV.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "advertiserperformance"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "requestedFields",
+              "value": "DateTime,CampaignId,Impressions,Clicks,Spend",
+              "description": "(Required) Comma-separated list of fields to include in the results"
+            },
+            {
+              "disabled": false,
+              "key": "startInclusive",
+              "value": "2026-03-01T00:00:00Z",
+              "description": "(Required) Start of the date range (inclusive)"
+            },
+            {
+              "disabled": false,
+              "key": "endExclusive",
+              "value": "2026-04-01T00:00:00Z",
+              "description": "(Required) End of the date range (exclusive)"
+            },
+            {
+              "disabled": false,
+              "key": "filter",
+              "value": "<string>",
+              "description": "Key-value filter pairs (e.g. filter[CampaignId]=123)"
+            },
+            {
+              "disabled": false,
+              "key": "groupBy",
+              "value": "<string>",
+              "description": "Comma-separated list of fields to group results by"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/csv"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "30e81ce6-9acb-4b8f-b1a1-4b060c127a61",
+          "name": "200 - Response from following the redirect. Contains the report data as CSV.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "advertiserperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,CampaignId,Impressions,Clicks,Spend"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/csv"
+            }
+          ],
+          "body": "\"DateTime\",\"CampaignId\",\"Impressions\",\"Clicks\",\"Spend\"\n\"2026-03-01T00:00:00Z\",123,8425048,1949,2046.45\n\"2026-03-02T00:00:00Z\",123,115692,24,22.80",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "0f122174-2ee2-4caf-81ef-543a7f9ca3f7",
+          "name": "303 See Other - The endpoint returns this status code directly. The Location header contains the URL where the report data can be downloaded. Most HTTP clients follow this redirect automatically.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "advertiserperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,CampaignId,Impressions,Clicks,Spend"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "See Other",
+          "code": 303,
+          "header": [
+            {
+              "disabled": false,
+              "description": "URL to download the report data. Issue a GET request to this URL to retrieve the CSV response shown above.",
+              "key": "Location",
+              "value": "string"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "dafb04b4-92d1-4b85-817f-19638070f822",
+          "name": "400 Bad Request - The request parameters are invalid. Check that all field names are valid, groupBy fields are included in requestedFields, and the date range does not exceed 32 days.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "advertiserperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,CampaignId,Impressions,Clicks,Spend"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "8bf2ac83-e3f4-404d-81af-00328ee73c30",
+          "name": "401 Unauthorized - The request is missing a valid access token, or the token does not have the required scope.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "advertiserperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,CampaignId,Impressions,Clicks,Spend"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "77ef7c70-d5a4-483f-8c64-0dee5ae6c47a",
+          "name": "500 Internal Server Error - An unexpected error occurred while processing the request.",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "advertiserperformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "requestedFields",
+                  "value": "DateTime,CampaignId,Impressions,Clicks,Spend"
+                },
+                {
+                  "key": "startInclusive",
+                  "value": "2026-03-01T00:00:00Z"
+                },
+                {
+                  "key": "endExclusive",
+                  "value": "2026-04-01T00:00:00Z"
+                },
+                {
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "key": "groupBy",
+                  "value": "<string>"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Must be set to text/csv",
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Internal Server Error",
+          "code": 500,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "59aed3c1-78ae-41ce-80cc-db76a9fdddad",
+      "name": "Campaign Lines Report",
+      "request": {
+        "name": "Campaign Lines Report",
+        "description": {
+          "content": "Retrieve a campaign line report with daily or hourly grain.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "lines",
+            ":interval"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "$filter",
+              "value": "Date eq 2023-12-13Z",
+              "description": "(Required) OData filter expression"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "interval",
+              "description": "(Required) The time interval"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "e961cdb7-d73a-4a9e-a023-ca3ff47dd916",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "lines",
+                ":interval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "interval",
+                  "description": "(Required) The time interval"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n\\\"@odata.context\\\": \\\"https://powerinbox.azure-api.net/reporting/$metadata#CampaignLines\\\",\\n\\\"value\\\": [\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 100,\\n\\t\\t\\\"CampaignLineId\\\": 200,\\n\\t\\t\\\"Impressions\\\": 7016314,\\n\\t\\t\\\"Clicks\\\": 893,\\n\\t\\t\\\"Conversions\\\": 10,\\n\\t\\t\\\"Cost\\\": 937.65\\n\\t},\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 100,\\n\\t\\t\\\"CampaignLineId\\\": 201,\\n\\t\\t\\\"Impressions\\\": 66328,\\n\\t\\t\\\"Clicks\\\": 43,\\n\\t\\t\\\"Conversions\\\": 3,\\n\\t\\t\\\"Cost\\\": 45.15\\n\\t},\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 101,\\n\\t\\t\\\"CampaignLineId\\\": 300,\\n\\t\\t\\\"Impressions\\\": 45212,\\n\\t\\t\\\"Clicks\\\": 30,\\n\\t\\t\\\"Conversions\\\": 0,\\n\\t\\t\\\"Cost\\\": 31.5\\n\\t}\\n]}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "27020f04-2547-4da1-8a30-a886ae1e426a",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "lines",
+                ":interval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "interval",
+                  "description": "(Required) The time interval"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "c729fc86-0f58-4495-b987-b49f50e925f7",
+      "name": "Campaigns Report",
+      "request": {
+        "name": "Campaigns Report",
+        "description": {
+          "content": "Retrieve a campaign report with daily or hourly grain. The query and response are OData V4 format. The response may include a \"next\" link.",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "reporting",
+            "campaigns",
+            ":interval"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "$filter",
+              "value": "Date eq 2023-12-13Z",
+              "description": "(Required) OData filter expression"
+            },
+            {
+              "disabled": false,
+              "key": "api-version",
+              "value": "1.0",
+              "description": "(Required) The API version"
+            }
+          ],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<string>",
+              "key": "interval",
+              "description": "(Required) The time interval for the report"
+            }
+          ]
+        },
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "5c5d3bb5-a74a-4084-828a-9ba4e4456940",
+          "name": "200",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "campaigns",
+                ":interval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "interval",
+                  "description": "(Required) The time interval for the report"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{\\n\\\"@odata.context\\\": \\\"https://powerinbox.azure-api.net/reporting/$metadata#Campaigns\\\",\\n\\\"value\\\": [\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 100,\\n\\t\\t\\\"Impressions\\\": 8425048,\\n\\t\\t\\\"Clicks\\\": 1949,\\n\\t\\t\\\"Conversions\\\": 31,\\n\\t\\t\\\"Cost\\\": 2046.45\\n\\t},\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 101,\\n\\t\\t\\\"Impressions\\\": 115692,\\n\\t\\t\\\"Clicks\\\": 24,\\n\\t\\t\\\"Conversions\\\": 0,\\n\\t\\t\\\"Cost\\\": 22.8\\n\\t},\\n\\t{\\n\\t\\t\\\"Date\\\": \\\"2023-12-13T00:00:00Z\\\",\\n\\t\\t\\\"CampaignId\\\": 102,\\n\\t\\t\\\"Impressions\\\": 6086488,\\n\\t\\t\\\"Clicks\\\": 790,\\n\\t\\t\\\"Conversions\\\": 9,\\n\\t\\t\\\"Cost\\\": 513.5\\n\\t}\\n]}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "eb950df9-3fa2-4270-8e21-aeb56d4d0f0f",
+          "name": "400",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "reporting",
+                "campaigns",
+                ":interval"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "$filter",
+                  "value": "Date eq 2023-12-13Z"
+                },
+                {
+                  "key": "api-version",
+                  "value": "1.0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "interval",
+                  "description": "(Required) The time interval for the report"
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: oauth2",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "<token>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "\"{}\"",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://powerinbox.azure-api.net/",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": []
+  },
+  "info": {
+    "_postman_id": "0675915a-fa5a-49e0-8483-889b5e674a91",
+    "name": "Jeeng Email Monetization — Advertisers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Advertiser-side campaign management and reporting for the Jeeng / OpenWeb Email Monetization platform: update campaign lines and their budget/pricing, transition campaign line and creative status, and pull campaign, campaign-line and flexible advertiser performance reports (OData V4 query and response format).\n\nContact Support:\n Name: Jeeng Technical Support\n Email: support@jeeng.com",
+      "type": "text/plain"
+    }
+  }
+}

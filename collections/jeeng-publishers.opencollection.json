@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Jeeng Email Monetization — Publishers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Containers Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/containers",
+        "params": [
+          {
+            "name": "$filter",
+            "value": "",
+            "type": "query",
+            "description": "OData filter expression"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Retrieve container reports with a daily grain."
+    },
+    {
+      "info": {
+        "name": "Placements Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/placements",
+        "params": [
+          {
+            "name": "$filter",
+            "value": "",
+            "type": "query",
+            "description": "OData filter expression"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Retrieve placement reports with a daily grain"
+    },
+    {
+      "info": {
+        "name": "Publisher Performance Report",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://powerinbox.azure-api.net/reporting/publisherperformance",
+        "headers": [
+          {
+            "name": "Accept",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "requestedFields",
+            "value": "",
+            "type": "query",
+            "description": "Comma-separated list of fields to include in the results"
+          },
+          {
+            "name": "startInclusive",
+            "value": "",
+            "type": "query",
+            "description": "Start of the date range (inclusive)"
+          },
+          {
+            "name": "endExclusive",
+            "value": "",
+            "type": "query",
+            "description": "End of the date range (exclusive)"
+          },
+          {
+            "name": "filter",
+            "value": "",
+            "type": "query",
+            "description": "Key-value filter pairs (e.g. filter[PlacementId]=456)"
+          },
+          {
+            "name": "groupBy",
+            "value": "",
+            "type": "query",
+            "description": "Comma-separated list of fields to group results by"
+          },
+          {
+            "name": "api-version",
+            "value": "",
+            "type": "query",
+            "description": "The API version"
+          }
+        ]
+      },
+      "docs": "Retrieve a flexible publisher performance report by specifying the fields, filters, and grouping you need. The endpoint returns a 303 redirect with a Location header. Follow the redirect to download the report data as CSV."
+    }
+  ],
+  "bundled": true
+}
