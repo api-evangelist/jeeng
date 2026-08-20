@@ -54,6 +54,20 @@ tags:
 - Reporting
 - Analytics
 - OData
+- Authentication
+tags_raw:
+- Company
+- Advertising
+- Publishing
+- Email
+- Push Notifications
+- Monetization
+- AdTech
+- Newsletters
+- Audience Engagement
+- Reporting
+- Analytics
+- OData
 - OAuth
 apis:
 - name: Jeeng Email Monetization — Advertisers API
@@ -125,6 +139,9 @@ apis:
   humanURL: https://developers.jeeng.com/reference/getting-an-access-token
   baseURL: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com
   tags:
+  - Authentication
+  - Security
+  tags_raw:
   - Authentication
   - OAuth
   - Security
