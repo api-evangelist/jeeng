@@ -70,96 +70,79 @@ tags_raw:
 - OData
 - OAuth
 apis:
-- name: Jeeng Email Monetization — Advertisers API
-  description: >-
-    Advertiser-side campaign management and reporting for the Jeeng / OpenWeb Email Monetization
-    platform. Update campaign lines (daily spend goal and CPC/CPM/CPA pricing), transition campaign
-    line and creative status between running, paused and archived, and pull campaign and
-    campaign-line reports at daily or hourly grain using OData V4 $filter queries. A flexible
-    advertiser performance report returns a 303 redirect to a CSV download for a caller-specified
-    set of fields, filters and groupings over a date range of up to 32 days. Requires an OAuth 2.0
-    client-credentials bearer token from the Microsoft Entra tenant, requested with the partners
-    scope; credentials are provisioned by an account manager.
+- aid: jeeng:jeeng-management-api
+  name: Jeeng Management API
+  description: The Management API from Jeeng — 3 operation(s) for management.
   humanURL: https://developers.jeeng.com/reference
   baseURL: https://powerinbox.azure-api.net/
   tags:
-  - Advertising
-  - AdTech
-  - Email
-  - Reporting
-  - Analytics
-  - OData
-  - Campaign Management
+  - Management
   properties:
+  - type: OpenAPI
+    url: openapi/jeeng-management-api-openapi.yml
   - type: Documentation
     url: https://developers.jeeng.com/docs/advertiser-overview
   - type: APIReference
     url: https://developers.jeeng.com/reference
-  - type: OpenAPI
-    url: openapi/jeeng-advertisers-openapi.yml
-  - type: Overlay
-    url: overlays/jeeng-advertisers-overlay.yaml
-- name: Jeeng Email Monetization — Publishers API
-  description: >-
-    Publisher-side inventory reporting for the Jeeng / OpenWeb Email Monetization platform.
-    Retrieve container and placement reports at a daily grain using OData V4 $filter queries, and a
-    flexible publisher performance report that returns a 303 redirect to a CSV download for a
-    caller-specified set of fields, filters and groupings over a date range of up to 32 days.
-    Metrics cover served ads, opens (including Apple Mail Privacy Protection adjusted opens),
-    clicks, revenue, CTR and RPM. Requires an OAuth 2.0 client-credentials bearer token from the
-    Microsoft Entra tenant, requested with the partners scope; credentials are provisioned by an
-    account manager.
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/publisher-overview
+  - type: Documentation
+    url: https://developers.jeeng.com/reference/getting-an-access-token
+  - type: APIReference
+    url: https://developers.jeeng.com/reference/getting-an-access-token
+- aid: jeeng:jeeng-reporting-api
+  name: Jeeng Reporting API
+  description: The Reporting API from Jeeng — 6 operation(s) for reporting.
   humanURL: https://developers.jeeng.com/reference
   baseURL: https://powerinbox.azure-api.net/
   tags:
-  - Publishing
-  - AdTech
-  - Email
-  - Newsletters
   - Reporting
-  - Analytics
-  - OData
   properties:
+  - type: OpenAPI
+    url: openapi/jeeng-reporting-api-openapi.yml
   - type: Documentation
-    url: https://developers.jeeng.com/docs/publisher-overview
+    url: https://developers.jeeng.com/docs/advertiser-overview
   - type: APIReference
     url: https://developers.jeeng.com/reference
-  - type: OpenAPI
-    url: openapi/jeeng-publishers-openapi.yml
-  - type: Overlay
-    url: overlays/jeeng-publishers-overlay.yaml
-- name: Jeeng Email Monetization — Authentication
-  description: >-
-    OAuth 2.0 client-credentials token endpoint for the Jeeng / OpenWeb Email Monetization partner
-    APIs, published by Jeeng as its own OpenAPI definition. Tokens are issued by the Microsoft
-    Entra ID (Azure AD) tenant revenuestripe.onmicrosoft.com and must be requested with the scope
-    api://revenuestripe.onmicrosoft.com/partners/.default, which grants access to every partner
-    endpoint. The resulting access_token is sent as a bearer token to the advertiser and publisher
-    APIs.
-  humanURL: https://developers.jeeng.com/reference/getting-an-access-token
-  baseURL: https://login.microsoftonline.com/revenuestripe.onmicrosoft.com
-  tags:
-  - Authentication
-  - Security
-  tags_raw:
-  - Authentication
-  - OAuth
-  - Security
-  properties:
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/publisher-overview
   - type: Documentation
     url: https://developers.jeeng.com/reference/getting-an-access-token
   - type: APIReference
     url: https://developers.jeeng.com/reference/getting-an-access-token
+- aid: jeeng:jeeng-revenuestripe-onmicrosoft-com-api
+  name: Jeeng Revenuestripe.onmicrosoft.com API
+  description: >-
+    The Revenuestripe.onmicrosoft.com API from Jeeng — 1 operation(s) for revenuestripe.onmicrosoft.com.
+  humanURL: https://developers.jeeng.com/reference
+  baseURL: https://powerinbox.azure-api.net/
+  tags:
+  - Revenuestripe.onmicrosoft.com
+  properties:
   - type: OpenAPI
-    url: openapi/jeeng-authentication-openapi.yml
-  - type: Overlay
-    url: overlays/jeeng-authentication-overlay.yaml
+    url: openapi/jeeng-revenuestripe-onmicrosoft-com-api-openapi.yml
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/advertiser-overview
+  - type: APIReference
+    url: https://developers.jeeng.com/reference
+  - type: Documentation
+    url: https://developers.jeeng.com/docs/publisher-overview
+  - type: Documentation
+    url: https://developers.jeeng.com/reference/getting-an-access-token
+  - type: APIReference
+    url: https://developers.jeeng.com/reference/getting-an-access-token
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/jeeng-advertisers-overlay.yaml
+- type: Overlay
+  url: overlays/jeeng-publishers-overlay.yaml
+- type: Overlay
+  url: overlays/jeeng-authentication-overlay.yaml
 - type: Website
   url: https://jeeng.com
 - type: DeveloperPortal
