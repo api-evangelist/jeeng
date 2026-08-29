@@ -16,6 +16,18 @@ description: >-
   placement and publisher performance reporting — served from powerinbox.azure-api.net behind
   Microsoft Entra ID OAuth 2.0 client-credentials tokens. API access is not self-serve: an account
   manager provisions the client id and client secret.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: sales
