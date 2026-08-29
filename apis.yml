@@ -149,6 +149,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/jeeng-capability-edges.yml
+  name: Jeeng Business Capability Map
 - type: Overlay
   url: overlays/jeeng-advertisers-overlay.yaml
 - type: Overlay

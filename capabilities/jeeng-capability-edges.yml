@@ -1,0 +1,37 @@
+slug: jeeng
+provider: Jeeng
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Reporting
+  spec_file: jeeng-reporting-api-openapi.yml
+  capability_id: BC-3760.60
+  capability_id_l1: BC-3760
+  capability_name: Advertising Revenue Reporting
+  confidence: 0.78
+  evidence: GET /reporting/campaigns/{interval} Campaigns Report; GET /reporting/advertiserperformance
+    Advertiser Performance Report; GET /reporting/publisherperformance Publisher Performance Report
+  reason: Read-only delivery/performance reporting for advertising campaigns, placements and publisher/advertiser
+    revenue — advertising revenue reporting. Could arguably be measurement analytics, but the objects
+    are campaigns and placements, not audience viewership.
+- tag: Management
+  spec_file: jeeng-management-api-openapi.yml
+  capability_id: BC-3760.40
+  capability_id_l1: BC-3760
+  capability_name: Ad Trafficking & Operations
+  confidence: 0.72
+  evidence: POST /management/creative/{id}/transition/{status} Update Status; PUT /management/line/{id}
+    Update — "update campaign lines and their budget/pricing, transition campaign line and creative status"
+  reason: Operations mutate advertising campaign lines and creative statuses on a publisher-monetization
+    ad platform — advertising sales and operations, specifically creative/line trafficking. Some ambiguity
+    between trafficking (.40) and direct sales (.20), hence moderate confidence on the L2.
