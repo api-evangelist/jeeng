@@ -149,6 +149,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/openweb/
+  name: OpenWeb
+  x-relationship: acquired
+  x-evidence: "Jeeng (formerly PowerInbox, acquired by OpenWeb in 2022 and now marketed as OpenWeb Email Monetization) is a multichannel monetization and audience-engagement platform for digital publishers."
 - type: CapabilityMap
   url: capabilities/jeeng-capability-edges.yml
   name: Jeeng Business Capability Map
