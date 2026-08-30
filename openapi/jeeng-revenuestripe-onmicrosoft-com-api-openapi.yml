@@ -1,0 +1,124 @@
+openapi: 3.2.0
+info:
+  title: Jeeng Email Monetization — Authentication (OAuth 2.0 token) Revenuestripe.onmicrosoft.com API
+  version: '1.0'
+  description: Microsoft Entra ID (Azure AD) client-credentials token endpoint for the Jeeng / OpenWeb Email Monetization partner APIs. Credentials (client id + client secret) are provisioned by Jeeng technical support; tokens must be requested with the scope api://revenuestripe.onmicrosoft.com/partners/.default.
+  contact:
+    name: Jeeng Technical Support
+    email: support@jeeng.com
+    url: https://developers.jeeng.com/
+servers:
+- url: https://login.microsoftonline.com
+security:
+- {}
+tags:
+- name: Revenuestripe.onmicrosoft.com
+paths:
+  /revenuestripe.onmicrosoft.com/oauth2/v2.0/token:
+    post:
+      summary: Getting an access token
+      description: ''
+      operationId: getting-an-access-token
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+              - client_id
+              - client_secret
+              - grant_type
+              - scope
+              properties:
+                client_id:
+                  type: string
+                  description: The client ID assigned to you
+                client_secret:
+                  type: string
+                  description: The client secret assigned to you
+                grant_type:
+                  type: string
+                  description: The grant type. Always use `client_credentials`
+                  default: client_credentials
+                scope:
+                  type: string
+                  description: The scope for partner API access. Always use `api://revenuestripe.onmicrosoft.com/partners/.default`. This scope includes the permissions for all partner endpoints — advertiser and publisher reporting, campaigns, creatives, and the performance reports. Requesting a different scope commonly results in a 401 "Not authorized to this endpoint.", even if the same token works on other endpoints.
+                  enum:
+                  - api://revenuestripe.onmicrosoft.com/partners/.default
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3599,\n  \"ext_expires_in\": 3599,\n  \"access_token\": \"<access token>\"\n}"
+              schema:
+                type: object
+                properties:
+                  token_type:
+                    type: string
+                    example: Bearer
+                  expires_in:
+                    type: integer
+                    example: 3599
+                    default: 0
+                  ext_expires_in:
+                    type: integer
+                    example: 3599
+                    default: 0
+                  access_token:
+                    type: string
+                    example: <access token>
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: "{\n  \"error\": \"unauthorized_client\",\n  \"error_description\": \"<detailed message>\",\n  \"error_codes\": [\n    700016\n  ],\n  \"timestamp\": \"2024-01-11 13:42:00Z\",\n  \"trace_id\": \"<trace id>\",\n  \"correlation_id\": \"<correlation id>\",\n  \"error_uri\": \"https://login.microsoftonline.com/error?code=700016\"\n}"
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: unauthorized_client
+                  error_description:
+                    type: string
+                    example: <detailed message>
+                  error_codes:
+                    type: array
+                    items:
+                      type: integer
+                      example: 700016
+                      default: 0
+                  timestamp:
+                    type: string
+                    example: '2024-01-11 13:42:00Z'
+                  trace_id:
+                    type: string
+                    example: <trace id>
+                  correlation_id:
+                    type: string
+                    example: <correlation id>
+                  error_uri:
+                    type: string
+                    example: https://login.microsoftonline.com/error?code=700016
+      deprecated: false
+      security: []
+      tags:
+      - Revenuestripe.onmicrosoft.com
+externalDocs:
+  description: Jeeng / OpenWeb Email Monetization developer documentation
+  url: https://developers.jeeng.com/reference
+x-readme:
+  headers: []
+  explorer-enabled: false
+  proxy-enabled: true
+x-readme-fauxas: true
+x-api-evangelist:
+  method: searched
+  source:
+  - https://developers.jeeng.com/reference/getting-an-access-token.md
+  note: Assembled verbatim from the per-operation OpenAPI 3.1.0 definitions Jeeng publishes on its own developer hub (developers.jeeng.com, a ReadMe hub whose readme-subdomain is "jeeng"). The hub renders each reference page as markdown at <page>.md with the full "# OpenAPI definition" JSON block for that operation; it exposes no whole-file spec download, so the paths and components of the three published registry files (authentication.json, advertisers.json, publishers.json) were merged back together without alteration. info.title/description/contact and externalDocs were added by API Evangelist and are captured in overlays/.
+  ownership: Served from developers.jeeng.com, a subdomain of the company domain. servers[] names powerinbox.azure-api.net and the Entra tenant revenuestripe.onmicrosoft.com — PowerInbox is Jeeng's former corporate name (www.powerinbox.com 301s to www.jeeng.com) and RevenueStripe was its ad-monetization brand. The hub is titled "OpenWeb Email Monetization" because OpenWeb acquired Jeeng/PowerInbox in 2022 and the product now ships under the OpenWeb brand on the original Jeeng domains (manage.jeeng.com 302s to manage.powerinbox.com and then to portal.openweb.com).

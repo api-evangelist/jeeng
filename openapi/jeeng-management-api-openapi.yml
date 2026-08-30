@@ -1,0 +1,215 @@
+openapi: 3.2.0
+info:
+  title: Jeeng Email Monetization — Advertisers Management API
+  version: '1.0'
+  description: 'Advertiser-side campaign management and reporting for the Jeeng / OpenWeb Email Monetization platform: update campaign lines and their budget/pricing, transition campaign line and creative status, and pull campaign, campaign-line and flexible advertiser performance reports (OData V4 query and response format).'
+  contact:
+    name: Jeeng Technical Support
+    email: support@jeeng.com
+    url: https://developers.jeeng.com/
+servers:
+- url: https://powerinbox.azure-api.net/
+security:
+- sec0: []
+tags:
+- name: Management
+paths:
+  /management/creative/{id}/transition/{status}:
+    post:
+      summary: Update Status
+      description: Update a creative status between running, paused and archived.
+      operationId: management-creative-status
+      parameters:
+      - name: id
+        in: path
+        description: The creative ID
+        schema:
+          type: string
+        required: true
+      - name: status
+        in: path
+        description: The creative status
+        schema:
+          type: string
+          enum:
+          - running
+          - paused
+          - archived
+        required: true
+      - name: api-version
+        in: query
+        description: The API version
+        required: true
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Management
+  /management/line/{id}/transition/{status}:
+    post:
+      summary: Update Status
+      description: Update a campaign line status between running, paused and archived.
+      operationId: management-line-status
+      parameters:
+      - name: id
+        in: path
+        description: The campaign line ID
+        schema:
+          type: string
+        required: true
+      - name: status
+        in: path
+        description: The campaign line status
+        schema:
+          type: string
+          enum:
+          - running
+          - paused
+          - archived
+        required: true
+      - name: api-version
+        in: query
+        description: The API version
+        required: true
+        schema:
+          type: string
+          default: '1.0'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Management
+  /management/line/{id}:
+    put:
+      summary: Update
+      description: Update a campaign line.
+      operationId: management-line-update
+      parameters:
+      - name: id
+        in: path
+        description: The campaign line ID
+        schema:
+          type: string
+        required: true
+      - name: api-version
+        in: query
+        description: The API version
+        required: true
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                budget:
+                  type: integer
+                  description: The daily spend goal
+                  format: int32
+                pricing:
+                  type: object
+                  description: The bid amount. Only set one of the 3 possible values (CPC, CPM or CPA)
+                  properties:
+                    cpc:
+                      type: number
+                      description: The price to pay for each click
+                      format: double
+                    cpa:
+                      type: number
+                      description: The amount to pay for achieving CPA goals
+                      format: double
+                    cpm:
+                      type: number
+                      description: The price to pay for 1000 impressions
+                      format: double
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: '400'
+          content:
+            application/json:
+              examples:
+                Result:
+                  value: '{}'
+              schema:
+                type: object
+                properties: {}
+      deprecated: false
+      tags:
+      - Management
+components:
+  securitySchemes:
+    sec0:
+      type: oauth2
+      flows: {}
+externalDocs:
+  description: Jeeng / OpenWeb Email Monetization developer documentation
+  url: https://developers.jeeng.com/reference
+x-readme:
+  headers: []
+  explorer-enabled: true
+  proxy-enabled: true
+x-readme-fauxas: true
+x-api-evangelist:
+  method: searched
+  source:
+  - https://developers.jeeng.com/reference/management-line-update.md
+  - https://developers.jeeng.com/reference/management-line-status.md
+  - https://developers.jeeng.com/reference/management-creative-status.md
+  - https://developers.jeeng.com/reference/reporting-campaigns.md
+  - https://developers.jeeng.com/reference/reporting-campaign-lines.md
+  - https://developers.jeeng.com/reference/reporting-advertiser-performance.md
+  note: Assembled verbatim from the per-operation OpenAPI 3.1.0 definitions Jeeng publishes on its own developer hub (developers.jeeng.com, a ReadMe hub whose readme-subdomain is "jeeng"). The hub renders each reference page as markdown at <page>.md with the full "# OpenAPI definition" JSON block for that operation; it exposes no whole-file spec download, so the paths and components of the three published registry files (authentication.json, advertisers.json, publishers.json) were merged back together without alteration. info.title/description/contact and externalDocs were added by API Evangelist and are captured in overlays/.
+  ownership: Served from developers.jeeng.com, a subdomain of the company domain. servers[] names powerinbox.azure-api.net and the Entra tenant revenuestripe.onmicrosoft.com — PowerInbox is Jeeng's former corporate name (www.powerinbox.com 301s to www.jeeng.com) and RevenueStripe was its ad-monetization brand. The hub is titled "OpenWeb Email Monetization" because OpenWeb acquired Jeeng/PowerInbox in 2022 and the product now ships under the OpenWeb brand on the original Jeeng domains (manage.jeeng.com 302s to manage.powerinbox.com and then to portal.openweb.com).
