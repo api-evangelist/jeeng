@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Jeeng Email Monetization — Authentication (OAuth 2.0 token) Revenuestripe.onmicrosoft.com API
+  title: Jeeng Email Monetization — Authentication (OAuth 2.0 token)…
   version: '1.0'
   description: Microsoft Entra ID (Azure AD) client-credentials token endpoint for the Jeeng / OpenWeb Email Monetization partner APIs. Credentials (client id + client secret) are provisioned by Jeeng technical support; tokens must be requested with the scope api://revenuestripe.onmicrosoft.com/partners/.default.
   contact:

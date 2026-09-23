@@ -1,0 +1,47 @@
+{
+  "provider": "jeeng",
+  "sources": [
+    "_original/jeeng-advertisers-openapi.yml",
+    "_original/jeeng-authentication-openapi.yml",
+    "_original/jeeng-publishers-openapi.yml"
+  ],
+  "outputs": [
+    "jeeng-management-api-openapi.yml",
+    "jeeng-reporting-api-openapi.yml",
+    "jeeng-revenuestripe-onmicrosoft-com-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "3 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "jeeng-advertisers-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "jeeng-advertisers-openapi.yml: tagged paths POST /management/creative/{id}/transition/{status} -> Management",
+    "jeeng-advertisers-openapi.yml: tagged paths POST /management/line/{id}/transition/{status} -> Management",
+    "jeeng-advertisers-openapi.yml: tagged paths PUT /management/line/{id} -> Management",
+    "jeeng-advertisers-openapi.yml: tagged paths GET /reporting/advertiserperformance -> Reporting",
+    "jeeng-advertisers-openapi.yml: tagged paths GET /reporting/lines/{interval} -> Reporting",
+    "jeeng-advertisers-openapi.yml: tagged paths GET /reporting/campaigns/{interval} -> Reporting",
+    "jeeng-advertisers-openapi.yml: declared missing tag: Management",
+    "jeeng-advertisers-openapi.yml: declared missing tag: Reporting",
+    "jeeng-authentication-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "jeeng-authentication-openapi.yml: tagged paths POST /revenuestripe.onmicrosoft.com/oauth2/v2.0/token -> Revenuestripe.onmicrosoft.com",
+    "jeeng-authentication-openapi.yml: declared missing tag: Revenuestripe.onmicrosoft.com",
+    "jeeng-publishers-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "jeeng-publishers-openapi.yml: tagged paths GET /reporting/containers -> Reporting",
+    "jeeng-publishers-openapi.yml: tagged paths GET /reporting/placements -> Reporting",
+    "jeeng-publishers-openapi.yml: tagged paths GET /reporting/publisherperformance -> Reporting",
+    "jeeng-publishers-openapi.yml: declared missing tag: Reporting",
+    "tag 'Reporting' spans 2 source specs (jeeng-advertisers-openapi.yml, jeeng-publishers-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/jeeng-publishers.json: archived document superseded by a larger archived document",
+    "_original/jeeng-authentication.json: archived document superseded by a larger archived document",
+    "_original/jeeng-advertisers.json: archived document superseded by a larger archived document",
+    "jeeng-management-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jeeng-reporting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "jeeng-revenuestripe-onmicrosoft-com-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
